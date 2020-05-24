@@ -42,12 +42,12 @@ class ScreenController():
     message_font = ImageFont.truetype(FredokaOne, 18)
     author_font = ImageFont.truetype(FredokaOne, 16)
 
-    tw, th = message_font.getsize(message_text)
+    tw, th = message_font.getsize(message)
 
     text_x = (self.inky_display.WIDTH / 2) - (tw / 2)
     text_y = (self.inky_display.HEIGHT / 2) - (th / 2)
 
-    draw.text((text_x, text_y), message_text, self.inky_display.WHITE, message_font)
+    draw.text((text_x, text_y), message, self.inky_display.WHITE, message_font)
     self.inky_display.set_image(img)
 
     self.inky_display.show()
