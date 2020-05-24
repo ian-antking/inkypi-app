@@ -19,7 +19,7 @@ class MessageState(State):
     message_text = message['text']
     message_author = "--" + message['author']
 
-    inky_display.set_border(inky_display.BLACK)
+    self.inky_display.set_border(inky_display.BLACK)
     img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), inky_display.BLACK)
 
     draw = ImageDraw.Draw(img)
@@ -48,7 +48,7 @@ class MessageState(State):
       self.display_message(payload_dictionary)
 
   def enterState(self):
-    inky_display.set_border(inky_display.BLACK)
+    self.inky_display.set_border(inky_display.BLACK)
     img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), inky_display.BLACK)
 
     draw = ImageDraw.Draw(img)
