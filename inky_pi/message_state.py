@@ -24,7 +24,7 @@ class MessageState(State):
     self.messages.append(payload_dictionary)
 
   def update(self):
-    if self.messages.length:
+    if len(self.messages):
       self.screen_controller.display_quote(self.messages[self.current_message % len(self.messages)])
       self.current_message += 1
 
