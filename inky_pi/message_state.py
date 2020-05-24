@@ -14,13 +14,13 @@ class MessageState(State):
     self.client = mqtt.Client('inky')
     self.client.on_message = self.on_message
     self.client.connect('192.168.1.128')
-    self.screen_controller.display_message('Message Mode')
     self.client.loop_start()
     self.client.subscribe('test/message')
 
   def on_message(self, client, userdata, message):
     payload = str(message.payload.decode("utf-8", "ignore"))
     payload_dictionary = json.loads(payload)
+    print('message recieved {}'.format(payload_dictionary['text']))
     self.messages.append(payload_dictionary)
 
   def update(self):
