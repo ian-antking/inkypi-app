@@ -28,6 +28,8 @@ if __name__ == '__main__':
 
   app = App(state_manager)
 
+  buttonshim.set_pixel(0xff, 0x00, 0x00)
+
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, pressed):
     buttonshim.set_pixel(0x94, 0x00, 0xd3)
