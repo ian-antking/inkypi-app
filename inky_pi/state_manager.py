@@ -10,6 +10,6 @@ class StateManager:
     return next((state for state in self.states if state.name == state_name), None)
 
   def setState(self, state):
-    self.currentaState.exitState()
+    self.currentState.exitState()
     self.currentState = self.findState(state)
     self.currentState.enterState()
