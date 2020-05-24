@@ -9,9 +9,9 @@ class StateManager:
     return next((state for state in self.states if state.name == state_name), None)
 
   def setState(self, state):
-    self.state['exit']()
+    self.state['exitState']()
     self.state = self.findState(state)
-    self.state['enter']()
+    self.state['enterState']()
   
   def getState(self):
     return self.state['name']

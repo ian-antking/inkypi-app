@@ -46,10 +46,10 @@ class MessageState(State):
       payload_dictionary = json.loads(payload)
       self.display_message(payload_dictionary)
 
-  def enter(self):
+  def enterState(self):
     self.client.connect('192.168.1.128')
     self.client.loop_start()
     self.client.subscribe('test/message')
 
-  def exit(self):
+  def exitState(self):
     self.client.loop_stop()
