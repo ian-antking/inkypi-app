@@ -12,11 +12,16 @@ class App():
 if __name__ == '__main__':
   import buttonshim
   import signal
+  from state import State
   from state_manager import StateManager
   from message_state import MessageState
 
   states = [
     MessageState(),
+    State('mode a'),
+    State('mode b'),
+    State('mode c'),
+    State('mode d')
   ]
 
   state_manager = StateManager(states)
