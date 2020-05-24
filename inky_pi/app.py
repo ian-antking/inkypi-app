@@ -5,8 +5,8 @@ class App():
     self.state = state_manager
   
   def setMode(self, mode):
-    self.state.setState(mode)
     print('Mode set to {}'.format(mode))
+    self.state.setState(mode)
 
 
 if __name__ == '__main__':
