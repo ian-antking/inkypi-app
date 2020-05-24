@@ -43,7 +43,7 @@ class ScreenController():
     aw, ah = author_font.getsize(message_author)
 
     text_x = (self.inky_display.WIDTH - int(self.inky_display.WIDTH * 0.9) ) / 2
-    text_y = (self.inky_display.HEIGHT / 3) - (th / 2)
+    text_y = (self.inky_display.HEIGHT - int(self.inky_display.HEIGHT * 0.9) ) / 2
 
     author_x = (self.inky_display.WIDTH / 3) * 3 - (aw + int(self.inky_display.WIDTH * 0.1))
     author_y = (self.inky_display.HEIGHT / 3) * 3 - (ah + int(self.inky_display.HEIGHT * 0.1))
