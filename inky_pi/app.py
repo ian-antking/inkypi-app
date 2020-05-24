@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 class App():
   def __init__(self):
     self.mode = 'message'
