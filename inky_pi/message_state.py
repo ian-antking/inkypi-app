@@ -18,6 +18,9 @@ class MessageState(State):
     self.client.loop_start()
     self.client.subscribe('test/message')
 
+  def enterState(self):
+    self.screen_controller.display_message('Waiting for messages...')
+
   def on_message(self, client, userdata, message):
     payload = str(message.payload.decode("utf-8", "ignore"))
     payload_dictionary = json.loads(payload)
