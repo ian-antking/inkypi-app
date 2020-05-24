@@ -13,21 +13,12 @@ if __name__ == '__main__':
   import buttonshim
   import signal
   from state_manager import StateManager
+  from state import State
 
-  states = {
-    'namebadge': {
-      'name': 'namebadge',
-      'enter': lambda : print('setting mode to namebadge'),
-      'execute': lambda : print('executing namebadge'),
-      'exit': lambda : print('exiting nambadge')
-    },
-    'message': {
-      'name': 'message',
-      'enter': lambda : print('setting mode to message'),
-      'execute': lambda : print('executing message'),
-      'exit': lambda : print('exiting message')
-    }
-  }
+  states = [
+    State('message'),
+    State('namebadge')
+  ]
 
   state_manager = StateManager(states)
 
