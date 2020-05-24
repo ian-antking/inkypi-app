@@ -11,7 +11,7 @@ class MessageState(State):
   def __init__(self):
     super().__init__('message')
     self.inky_display = InkyPHAT('red')
-    self.inky_display.set_border(self.inky_display.RED)
+    self.inky_display.set_border(self.inky_display.BLACK)
     # self.client = mqtt.Client('inky')
     # self.client.on_message = self.on_message
     # self.client.connect('192.168.1.128')
