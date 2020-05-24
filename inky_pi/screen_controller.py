@@ -29,20 +29,20 @@ class ScreenController():
     return reflowed
 
   def display_quote(self, message):
-    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT * 0.9), self.inky_display.BLACK)
+    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), self.inky_display.BLACK)
 
     draw = ImageDraw.Draw(img)
 
     message_font = ImageFont.truetype(FredokaOne, 18)
     author_font = ImageFont.truetype(FredokaOne, 16)
 
-    message_text = self.reflow_message(message['text'], self.inky_display.WIDTH, message_font)
+    message_text = self.reflow_message(message['text'], int(self.inky_display.WIDTH * 0.9), message_font)
     message_author = "--" + message['author']
 
     tw, th = message_font.getsize(message_text)
     aw, ah = author_font.getsize(message_author)
 
-    text_x = (self.inky_display.WIDTH - self.inky_display,WIDTH * 0.9 )
+    text_x = (self.inky_display.WIDTH - int(self.inky_display.WIDTH * 0.9) )
     text_y = (self.inky_display.HEIGHT / 3) - (th / 2)
 
     author_x = (self.inky_display.WIDTH / 3) * 2 - (aw /  2)
