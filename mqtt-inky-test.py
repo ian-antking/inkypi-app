@@ -20,7 +20,7 @@ def display_message(message):
     draw = ImageDraw.Draw(img)
 
     message_font = ImageFont.truetype(FredokaOne, 18)
-    author_font = ImageFont.truetype(FredokaOne, 12)
+    author_font = ImageFont.truetype(FredokaOne, 16)
 
     tw, th = message_font.getsize(message_text)
     aw, ah = author_font.getsize(message_author)
