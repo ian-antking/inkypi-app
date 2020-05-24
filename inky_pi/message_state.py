@@ -26,7 +26,7 @@ class MessageState(State):
     payload = str(message.payload.decode("utf-8", "ignore"))
     payload_dictionary = json.loads(payload)
     print('message recieved {}'.format(payload_dictionary['text']))
-    self.messages.append(payload_dictionary)
+    self.new_messages.append(payload_dictionary)
 
   def update(self):
     if len(self.new_messages) > 0:
