@@ -19,9 +19,20 @@ class MessageState(State):
     self.client.loop_start()
     self.client.subscribe('test/message')
 
+  def display_new_message(self):
+        self.screen_controller.display_quote(self.new_messages[0])
+        self.messages.append(self.new_messages.pop(0))
+
+  def display_message(self):
+    self.screen_controller.display_quote(self.messages[self.current_message_index % len(self.messages)])
+
   def enterState(self):
     if len(self.messages) == 0 and len(self.new_messages) == 0:
       self.screen_controller.display_message('Waiting for messages...')
+    elif len(self.new_messages) > 0:
+      self.display_new_message()
+    else:
+      self.screen_controller.display_message(self.messages[self.current_message_index])
 
   def on_message(self, client, userdata, message):
     payload = str(message.payload.decode("utf-8", "ignore"))
@@ -31,10 +42,9 @@ class MessageState(State):
 
   def update(self):
     if len(self.new_messages) > 0:
-      self.screen_controller.display_quote(self.new_messages[0])
-      self.messages.append(self.new_messages.pop(0))
+      self.display_new_message()
     elif len(self.messages) > 1 and self.update_timer == 60:
-      self.screen_controller.display_quote(self.messages[self.current_message_index % len(self.messages)])
+      self.display_message()
       self.current_message_index += 1
       self.update_timer = 0
 
