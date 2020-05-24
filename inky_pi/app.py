@@ -10,6 +10,8 @@ if __name__ == '__main__':
   import buttonshim
   import signal
 
+  app = App()
+
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, pressed):
       buttonshim.set_pixel(0x94, 0x00, 0xd3)
