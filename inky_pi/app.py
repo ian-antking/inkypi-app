@@ -13,11 +13,10 @@ if __name__ == '__main__':
   import buttonshim
   import signal
   from state_manager import StateManager
-  from state import State
+  from message_state import MessageState
 
   states = [
-    State('message'),
-    State('namebadge')
+    MessageState('message'),
   ]
 
   state_manager = StateManager(states)
