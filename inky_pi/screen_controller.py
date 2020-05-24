@@ -8,16 +8,36 @@ class ScreenController():
         self.inky_display = InkyPHAT('red')
         self.inky_display.set_border(self.inky_display.BLACK)
 
-  def display_quote(self, message):
-    message_text = message['text']
-    message_author = "--" + message['author']
+  def reflow_message(self, message, width, font):
+    words = message.split(" ")
+    reflowed = '"'
+    line_length = 0
 
+    for i in range(len(words)):
+        word = words[i] + " "
+        word_length = font.getsize(word)[0]
+        line_length += word_length
+
+        if line_length < width:
+            reflowed += word
+        else:
+            line_length = word_length
+            reflowed = reflowed[:-1] + "\n  " + word
+
+    reflowed = reflowed.rstrip() + '"'
+
+    return reflowed
+
+  def display_quote(self, message):
     img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), self.inky_display.BLACK)
 
     draw = ImageDraw.Draw(img)
 
     message_font = ImageFont.truetype(FredokaOne, 18)
     author_font = ImageFont.truetype(FredokaOne, 16)
+
+    message_text = self.reflow_message(message['text'], self.inky_display.WIDTH, message_font)
+    message_author = "--" + message['author']
 
     tw, th = message_font.getsize(message_text)
     aw, ah = author_font.getsize(message_author)
