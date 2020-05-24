@@ -41,7 +41,6 @@ if __name__ == '__main__':
   @buttonshim.on_press(buttonshim.BUTTON_D)
   def button_d(button, pressed):
     buttonshim.set_pixel(0xff, 0xff, 0x00)
-    app.setMode('namebadge')
 
   @buttonshim.on_press(buttonshim.BUTTON_E)
   def button_e(button, pressed):
