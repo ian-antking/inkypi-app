@@ -41,15 +41,15 @@ class MessageState(State):
 
     inky_display.show()
 
-def on_message(self, client, userdata, message):
-    payload = str(message.payload.decode("utf-8", "ignore"))
-    payload_dictionary = json.loads(payload)
-    self.display_message(payload_dictionary)
+  def on_message(self, client, userdata, message):
+      payload = str(message.payload.decode("utf-8", "ignore"))
+      payload_dictionary = json.loads(payload)
+      self.display_message(payload_dictionary)
 
-def enter(self):
-  self.client.connect('192.168.1.128')
-  self.client.loop_start()
-  self.client.subscribe('test/message')
+  def enter(self):
+    self.client.connect('192.168.1.128')
+    self.client.loop_start()
+    self.client.subscribe('test/message')
 
-def exit(self):
-  self.client.loop_stop()
+  def exit(self):
+    self.client.loop_stop()
