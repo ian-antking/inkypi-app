@@ -7,11 +7,11 @@ class State():
     self.screen_controller = ScreenController()
 
   def enterState(self):
-    print('entering {} mode'.format(self.name))
+    print('entering {}'.format(self.name))
     self.screen_controller.display_message(self.name)
 
   def update(self):
     sleep(1)
 
   def exitState(self):
-    print('exiting {} mode'.format(self.name))
+    print('exiting {}'.format(self.name))
