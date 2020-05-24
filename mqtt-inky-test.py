@@ -1,10 +1,10 @@
 import paho.mqtt.client as mqtt
+import sys
 import signal
+import json
 from inky import InkyPHAT
 from PIL import Image, ImageFont, ImageDraw
 from font_fredoka_one import FredokaOne
-import sys
-import json
 
 broker_address = sys.argv[1]
 topic = sys.argv[2]
