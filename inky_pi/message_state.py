@@ -16,7 +16,7 @@ class MessageState(State):
     # self.client.connect('192.168.1.128')
 
   def enterState(self):
-    img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), self.inky_display.BLACK)
+    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), self.inky_display.BLACK)
     draw = ImageDraw.Draw(img)
     self.inky_display.set_image(img)
     self.inky_display.show()
