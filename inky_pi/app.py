@@ -12,7 +12,7 @@ class App():
 if __name__ == '__main__':
   import buttonshim
   import signal
-  from inky_pi.state_manager import StateManager
+  from state_manager import StateManager
 
   states = {
     'namebadge': {
