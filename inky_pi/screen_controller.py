@@ -42,14 +42,14 @@ class ScreenController():
     tw, th = message_font.getsize(message_text)
     aw, ah = author_font.getsize(message_author)
 
-    text_x = (self.inky_display.WIDTH / 2) - (tw / 2)
+    text_x = (self.inky_display.WIDTH / 2)
     text_y = (self.inky_display.HEIGHT / 3) - (th / 2)
 
     author_x = (self.inky_display.WIDTH / 3) * 2 - (aw /  2)
     author_y = (self.inky_display.HEIGHT / 3) * 2 - (ah / 2)
 
     draw.text((text_x, text_y), message_text, self.inky_display.WHITE, message_font)
-    draw.text((author_x, author_y), message_author, self.inky_display.RED, author_font)
+    # draw.text((author_x, author_y), message_author, self.inky_display.RED, author_font)
     self.inky_display.set_image(img)
 
     self.inky_display.show()
