@@ -1,17 +1,35 @@
 #!/usr/bin/env python
 
 class App():
-  def __init__(self):
-    self.mode = 'message'
+  def __init__(self, state_manager):
+    self.state = state_manager
   
   def setMode(self, mode):
-    self.mode = mode
+    self.state.setState(mode)
     print('Mode set to {}'.format(mode))
 
 
 if __name__ == '__main__':
   import buttonshim
   import signal
+  from inky_pi.state_manager import StateManager
+
+  states = {
+    'namebadge': {
+      'name': 'namebadge',
+      'enter': lambda : print('setting mode to namebadge'),
+      'execute': lambda : print('executing namebadge'),
+      'exit': lambda : print('exiting nambadge')
+    },
+    'message': {
+      'name': 'message',
+      'enter': lambda : print('setting mode to message'),
+      'execute': lambda : print('executing message'),
+      'exit': lambda : print('exiting message')
+    }
+  }
+
+  state_manager = StateManager(states)
 
   app = App()
 
