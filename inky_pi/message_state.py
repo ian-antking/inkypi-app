@@ -25,3 +25,4 @@ class MessageState(State):
 
   def exitState(self):
     self.client.loop_stop()
+    self.client.unsubscribe('test/message')
