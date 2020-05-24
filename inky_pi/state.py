@@ -10,4 +10,4 @@ class State():
     self.screen_controller.display_message(self.name)
 
   def exitState(self):
-    print('exiting {} mode'.format(name))
+    print('exiting {} mode'.format(self.name))
