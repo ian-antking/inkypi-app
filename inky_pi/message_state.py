@@ -26,7 +26,6 @@ class MessageState(State):
     payload_dictionary = json.loads(payload)
     print('message recieved {}'.format(payload_dictionary['text']))
     self.messages.append(payload_dictionary)
-    self.screen_controller.display_quote(payload_dictionary)
 
   def update(self):
     if len(self.messages) > 1 and self.update_timer == 60:
