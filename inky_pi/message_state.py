@@ -13,6 +13,7 @@ class MessageState(State):
     self.inky_display = InkyPHAT('red')
     self.client = mqtt.Client('inky')
     self.client.on_message = self.on_message
+    self.client.connect('192.168.1.128')
   
   def display_message(self, message):
     message_text = message['text']
@@ -47,7 +48,12 @@ class MessageState(State):
       self.display_message(payload_dictionary)
 
   def enterState(self):
-    self.client.connect('192.168.1.128')
+    inky_display.set_border(inky_display.BLACK)
+    img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), inky_display.BLACK)
+
+    draw = ImageDraw.Draw(img)
+    inky_display.set_image(img)
+
     self.client.loop_start()
     self.client.subscribe('test/message')
 
