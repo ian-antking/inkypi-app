@@ -7,7 +7,7 @@ class State():
 
   def enterState(self):
     print('entering {} mode'.format(self.name))
-    screen_controller.display_message(self.name)
+    self.screen_controller.display_message(self.name)
 
   def exitState(self):
     print('exiting {} mode'.format(name))
