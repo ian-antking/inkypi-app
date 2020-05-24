@@ -55,4 +55,5 @@ if __name__ == '__main__':
     buttonshim.set_pixel(0xff, 0x00, 0x00)
     app.setMode('message')
 
-  signal.pause()
+  while True:
+    app.state.update()
