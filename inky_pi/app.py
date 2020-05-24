@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
   state_manager = StateManager(states)
 
-  app = App()
+  app = App(state_manager)
 
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, pressed):
