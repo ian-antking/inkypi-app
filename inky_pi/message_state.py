@@ -9,6 +9,7 @@ from font_fredoka_one import FredokaOne
 
 class MessageState(State):
   def __init__(self):
+    super().__init__('message')
     self.inky_display = InkyPHAT('red')
     self.client = mqtt.Client('inky')
     self.client.on_message = self.on_message

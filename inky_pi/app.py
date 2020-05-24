@@ -16,7 +16,7 @@ if __name__ == '__main__':
   from message_state import MessageState
 
   states = [
-    MessageState('message'),
+    MessageState(),
   ]
 
   state_manager = StateManager(states)
