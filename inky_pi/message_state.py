@@ -10,6 +10,7 @@ class MessageState(State):
     super().__init__('message')
     self.messages = []
     self.current_message = 0
+    self.update_timer = 0
     self.screen_controller = ScreenController()
     self.client = mqtt.Client('inky')
     self.client.on_message = self.on_message
@@ -24,8 +25,10 @@ class MessageState(State):
     self.messages.append(payload_dictionary)
 
   def update(self):
-    if len(self.messages):
+    if len(self.messages) and self.update_timer == 60:
       self.screen_controller.display_quote(self.messages[self.current_message % len(self.messages)])
       self.current_message += 1
+      self.update_timer = 0
 
-    sleep(60)
+    sleep(1)
+    self.update_timer += 1
