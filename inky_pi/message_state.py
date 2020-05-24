@@ -30,7 +30,10 @@ class MessageState(State):
 
   def update(self):
     if len(self.new_messages):
-      self.screen_controller.display_quote(self.new_messages[0])
+      try:
+        self.screen_controller.display_quote(self.new_messages[0])
+      except error:
+        print(error)
       self.messages.append(self.new_messages.pop(0))
     elif len(self.messages) > 1 and self.update_timer == 60:
       self.screen_controller.display_quote(self.messages[self.current_message_index % len(self.messages)])
@@ -39,4 +42,3 @@ class MessageState(State):
 
     sleep(1)
     self.update_timer += 1
-    print(self.update_timer, self.messages)
