@@ -56,4 +56,4 @@ if __name__ == '__main__':
     app.setMode('message')
 
   while True:
-    app.state.update()
+    app.state.currentState.update()

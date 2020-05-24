@@ -3,16 +3,13 @@
 class StateManager:
   def __init__(self, states):
     self.states = states
-    self.state = states[0]
-    self.state.enterState()
+    self.currentState = states[0]
+    self.currentState.enterState()
 
   def findState(self, state_name):
     return next((state for state in self.states if state.name == state_name), None)
 
   def setState(self, state):
-    self.state.exitState()
-    self.state = self.findState(state)
-    self.state.enterState()
-  
-  def getState(self):
-    return self.state['name']
+    self.currentaState.exitState()
+    self.currentState = self.findState(state)
+    self.currentState.enterState()
