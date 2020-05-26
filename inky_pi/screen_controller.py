@@ -98,7 +98,7 @@ class ScreenController():
     hatch_spacing = 24
 
     for x in range(0, 2 * self.inky_display.WIDTH, hatch_spacing):
-      draw.line((x, 0, x - self.inky_display.WIDTH, self.inky_display.HEIGHT), fill=theme['background'], width=6)
+      draw.line((x, 0, x - self.inky_display.WIDTH, self.inky_display.HEIGHT), fill=theme['background'], width=3)
 
     draw.text((text_x, text_y), message, theme['text'], message_font)
     self.inky_display.set_image(img)
