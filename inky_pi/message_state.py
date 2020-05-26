@@ -10,8 +10,6 @@ class MessageState(State):
     super().__init__('message')
     self.messages = []
     self.new_messages = []
-    self.current_message_index = 0
-    self.update_timer = 0
     self.screen_controller = ScreenController()
     self.client = mqtt.Client('inky')
     self.client.on_message = self.on_message
@@ -39,14 +37,4 @@ class MessageState(State):
     payload_dictionary = json.loads(payload)
     print('message recieved {}'.format(payload_dictionary['text']))
     self.new_messages.append(payload_dictionary)
-
-  def update(self):
-    if len(self.new_messages) > 0:
-      self.display_new_message()
-    elif len(self.messages) > 1 and self.update_timer == 60:
-      self.display_message()
-      self.current_message_index += 1
-      self.update_timer = 0
-
-    sleep(1)
-    self.update_timer += 1
+    self.display_message('{} new message'.format(len(self.messages)))
