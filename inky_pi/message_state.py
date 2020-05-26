@@ -17,9 +17,6 @@ class MessageState(State):
     self.client.loop_start()
     self.client.subscribe('test/message')
 
-  def display_message(self, message):
-    self.screen_controller.display_quote(message)
-
   def enterState(self):
     if len(self.messages) == 0 and len(self.new_messages) == 0:
       self.screen_controller.display_message('Waiting for messages...')
@@ -38,6 +35,6 @@ class MessageState(State):
   def c_button(self):
     if len(self.new_messages):
       self.messages.append(self.new_messages[0])
-      self.display_message(self.new_messages.pop(0))
+      self.screen_controller.display_message(self.new_messages.pop(0)['text'])
     
     print(self.new_messages)
