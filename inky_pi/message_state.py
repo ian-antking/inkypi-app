@@ -19,7 +19,7 @@ class MessageState(State):
 
   def enterState(self):
     self.set_busy()
-    self.screen_controller.display_alert('Waiting for messages...')
+    self.screen_controller.display_alert('Waiting for messages...', 'red')
     self.set_idle()
 
 
@@ -28,7 +28,7 @@ class MessageState(State):
     payload = str(message.payload.decode("utf-8", "ignore"))
     payload_dictionary = json.loads(payload)
     self.new_messages.append(payload_dictionary)
-    self.screen_controller.display_alert('{} new message'.format(len(self.new_messages)))
+    self.screen_controller.display_prompt('{} new message'.format(len(self.new_messages)))
     self.set_idle()
 
   def c_button(self):
