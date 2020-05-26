@@ -68,33 +68,6 @@ class ScreenController():
 
   def display_prompt(self, message, instruction, theme = 'light'):
     screen = PromptScreen(theme, self.inky_display, message, instruction)
-
-    message_font = ImageFont.truetype(SourceSansProSemibold, 18)
-    instruction_font = ImageFont.truetype(SourceSansProSemibold, 16)
-
-    message_text = self.reflow_message(message, self.screen_width, message_font, False)
-    instruction_text = self.reflow_message(instruction, self.screen_width, instruction_font, False)
-
-    tw, th = message_font.getsize(message)
-    iw, ih = instruction_font.getsize(instruction)
-
-    text_x = (self.screen_width  / 2) - (tw / 2)
-    text_y = (self.screen_height / 2) - (th / 2)
-
-    instruction_x = (self.screen_width  / 2) - (iw / 2)
-    instruction_y = ((self.screen_height / 3) * 2)
-
-    screen.draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=screen.theme.highlight)
-
-    hatch_spacing = 24
-
-    for x in range(0, 2 * self.screen_width, hatch_spacing):
-      screen.draw.line((x, 0, x - self.screen_width, self.screen_height), fill=screen.theme.background, width=3)
-
-    screen.draw.rectangle((0, text_y + th + 5, self.screen_width, self.screen_height), fill=screen.theme.highlight)
-
-    screen.draw.multiline_text((text_x, text_y), message_text, screen.theme.text, message_font, align='center')
-    screen.draw.multiline_text((instruction_x, instruction_y), instruction_text, screen.theme.background, instruction_font, align='center')
     self.inky_display.set_image(screen.image)
     self.inky_display.show()
 
