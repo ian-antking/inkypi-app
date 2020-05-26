@@ -28,7 +28,9 @@ class MessageState(State):
     payload = str(message.payload.decode("utf-8", "ignore"))
     payload_dictionary = json.loads(payload)
     self.new_messages.append(payload_dictionary)
-    self.screen_controller.display_prompt('{} new message'.format(len(self.new_messages)))
+    message = '{} new message'.format(len(self.new_messages))
+    instruction = 'Press C'
+    self.screen_controller.display_prompt(message, instruction)
     self.set_idle()
 
   def c_button(self):
