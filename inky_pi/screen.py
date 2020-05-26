@@ -30,3 +30,8 @@ class Screen():
     reflowed = reflowed.rstrip() + end_of_string
 
     return reflowed
+
+    def render_hatches(self, hatch_spacing, hatch_width):
+      for x in range(0, 2 * self.width, hatch_spacing):
+        self.draw.line((x, 0, x - self.width, self.height), fill=self.theme.background, width=hatch_width)
+

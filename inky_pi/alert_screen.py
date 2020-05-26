@@ -17,9 +17,6 @@ class AlertScreen(Screen):
     self.draw.rectangle((0, 0, self.width, (self.height - th) / 2), fill=self.theme.highlight)
     self.draw.rectangle((0, text_y + th + 5, self.width, self.height), fill=self.theme.highlight)
 
-    hatch_spacing = 24
-
-    for x in range(0, 2 * self.width, hatch_spacing):
-      self.draw.line((x, 0, x - self.width, self.height), fill=self.theme.background, width=3)
+    self.render_hatches(24, 3)
 
     self.draw.multiline_text((text_x, text_y), message_text, self.theme.text, message_font, align='center')
