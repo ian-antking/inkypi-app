@@ -85,6 +85,8 @@ class ScreenController():
     self.inky_display.set_border(theme['background'])
     img = Image.new("P", (self.screen_width, self.screen_height), theme['background'])
 
+    message_text = self.reflow_message(message['text'], int(self.screen_width * 0.9), message_font)
+
     draw = ImageDraw.Draw(img)
 
     message_font = ImageFont.truetype(SourceSansProSemibold, 18)
@@ -102,7 +104,7 @@ class ScreenController():
     for x in range(0, 2 * self.screen_width, hatch_spacing):
       draw.line((x, 0, x - self.screen_width, self.screen_height), fill=theme['background'], width=3)
 
-    draw.text((text_x, text_y), message, theme['text'], message_font)
+    draw.text((text_x, text_y), message_text, theme['text'], message_font)
     self.inky_display.set_image(img)
     self.inky_display.show()
 
