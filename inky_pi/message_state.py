@@ -38,7 +38,7 @@ class MessageState(State):
       message = self.new_messages.pop(0)
       print(message)
       self.messages.append(message)
-      self.screen_controller.display_message('This is the message')
+      self.screen_controller.display_message(message['text'])
     
     print(self.new_messages)
     print(self.messages)
