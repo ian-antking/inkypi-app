@@ -19,7 +19,7 @@ class MessageState(State):
 
   def enterState(self):
     self.set_busy()
-    self.screen_controller.display_message('Waiting for messages...', 'red')
+    self.screen_controller.display_message('Waiting for messages...')
     self.set_idle()
 
 
@@ -38,7 +38,7 @@ class MessageState(State):
       message = self.new_messages.pop(0)
       print(message)
       self.messages.append(message)
-      self.screen_controller.display_quote(message, 'dark')
+      self.screen_controller.display_quote(message)
     
     print(self.new_messages)
     print(self.messages)
