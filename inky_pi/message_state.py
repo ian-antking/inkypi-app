@@ -17,12 +17,8 @@ class MessageState(State):
     self.client.loop_start()
     self.client.subscribe('test/message')
 
-  def display_new_message(self):
-        self.screen_controller.display_quote(self.new_messages[0])
-        self.messages.append(self.new_messages.pop(0))
-
-  def display_message(self):
-    self.screen_controller.display_quote(self.messages[self.current_message_index % len(self.messages)])
+  def display_message(self, message):
+    self.screen_controller.display_quote(message)
 
   def enterState(self):
     if len(self.messages) == 0 and len(self.new_messages) == 0:
