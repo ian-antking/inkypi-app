@@ -29,7 +29,7 @@ class ScreenController():
     return reflowed
 
   def display_quote(self, message):
-    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), self.inky_display.BLACK)
+    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), self.inky_display.WHITE)
 
     draw = ImageDraw.Draw(img)
 
@@ -50,8 +50,8 @@ class ScreenController():
     author_x = self.inky_display.WIDTH - (aw + int(self.inky_display.WIDTH * 0.1))
     author_y = self.inky_display.HEIGHT - (ah + int(self.inky_display.HEIGHT * 0.1))
 
-    draw.text((text_x, text_y), message_text, self.inky_display.WHITE, message_font)
-    draw.text((author_x, author_y), message_author, self.inky_display.WHITE, author_font)
+    draw.text((text_x, text_y), message_text, self.inky_display.BLACK, message_font)
+    draw.text((author_x, author_y), message_author, self.inky_display.RED, author_font)
     self.inky_display.set_image(img)
 
     self.inky_display.show()
