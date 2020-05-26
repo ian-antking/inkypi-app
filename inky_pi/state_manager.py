@@ -9,7 +9,8 @@ class StateManager:
   def findState(self, state_name):
     return next((state for state in self.states if state.name == state_name), None)
 
-  def setState(self, state):
-    self.currentState.exitState()
-    self.currentState = self.findState(state)
-    self.currentState.enterState()
+  def setState(self, state_name):
+    if not self.currentState.name == state_name: 
+      self.currentState.exitState()
+      self.currentState = self.findState(state_name)
+      self.currentState.enterState()
