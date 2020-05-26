@@ -12,7 +12,6 @@ class App():
 if __name__ == '__main__':
   import buttonshim
   import signal
-  from state import State
   from state_manager import StateManager
   from message_state import MessageState
 
