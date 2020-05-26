@@ -7,10 +7,10 @@ class State():
     self.screen_controller = ScreenController()
     self.busy = False
 
-  def busy(self):
+  def set_busy(self):
     self.busy = True
 
-  def idle(self):
+  def set_idle(self):
     self.busy = False
 
   def enterState(self):
