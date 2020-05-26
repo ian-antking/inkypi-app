@@ -6,6 +6,7 @@ from font_source_sans_pro import SourceSansProSemibold
 from screen import Screen
 from alert_screen import AlertScreen
 from prompt_screen import PromptScreen
+from message_screen import MessageScreen
 
 class ScreenController():
   def __init__(self):
@@ -36,7 +37,7 @@ class ScreenController():
     return reflowed
 
   def display_message(self, message, theme = 'light'):
-    screen = Screen(message['theme'] or theme, self.inky_display)
+    screen = MessageScreen(message['theme'] or theme, self.inky_display, message)
 
     message_font = ImageFont.truetype(SourceSerifProSemibold, 16)
     author_font = ImageFont.truetype(SourceSansProSemibold, 18)
