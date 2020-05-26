@@ -36,5 +36,8 @@ class MessageState(State):
     self.screen_controller.display_message('{} new message'.format(len(self.new_messages)))
 
   def c_button(self):
-    self.messages.append(self.new_messages[0])
-    self.display_message(self.new_messages.pop(0))
+    if len(self.new_messages):
+      self.messages.append(self.new_messages[0])
+      self.display_message(self.new_messages.pop(0))
+    
+    print(self.new_messages)
