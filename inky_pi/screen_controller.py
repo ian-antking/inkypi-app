@@ -52,7 +52,7 @@ class ScreenController():
         'highlight': self.inky_display.BLACK
       }
 
-  def display_quote(self, message, theme = 'light'):
+  def display_message(self, message, theme = 'light'):
     theme = self.create_colour_scheme(message['theme'] or theme)
     self.inky_display.set_border(theme['background'])
     img = Image.new("P", (self.screen_width, self.screen_height), theme['background'])
@@ -82,7 +82,7 @@ class ScreenController():
 
     self.inky_display.show()
 
-  def display_message(self, message, theme = 'light'):
+  def display_alert(self, message, theme = 'light'):
     theme = self.create_colour_scheme(theme)
     self.inky_display.set_border(theme['background'])
     img = Image.new("P", (self.screen_width, self.screen_height), theme['background'])
