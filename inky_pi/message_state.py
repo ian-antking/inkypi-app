@@ -32,10 +32,10 @@ class MessageState(State):
     self.set_idle()
 
   def c_button(self):
-    self.set_busy()
     if len(self.new_messages):
+      self.set_busy()
       message = self.new_messages.pop(0)
       self.messages.append(message)
       self.screen_controller.display_quote(message)
+      self.set_idle()
     
-    self.set_idle()
