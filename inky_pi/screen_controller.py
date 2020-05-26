@@ -28,8 +28,29 @@ class ScreenController():
 
     return reflowed
 
-  def display_quote(self, message):
-    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), self.inky_display.WHITE)
+  def create_colour_scheme(self, theme):
+    if theme == 'light':
+      return {
+        'background': self.inky_display.WHITE,
+        'text': self.inky_display.BLACK,
+        'hightlinght': self.inky_display.RED
+      }
+    if theme == 'dark':
+      return {
+        'background': self.inky_display.BLACK,
+        'text': self.inky_display.WHITE,
+        'hightlinght': self.inky_display.RED
+      }
+    if theme == 'red':
+      return {
+        'background': self.inky_display.RED,
+        'text': self.inky_display.WHITE,
+        'hightlinght': self.inky_display.BLACK
+      }
+
+  def display_quote(self, message, theme = 'light'):
+    theme = self.create_colour_scheme(theme)
+    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), theme['background'])
 
     draw = ImageDraw.Draw(img)
 
@@ -50,15 +71,15 @@ class ScreenController():
     author_x = self.inky_display.WIDTH - (aw + int(self.inky_display.WIDTH * 0.1))
     author_y = self.inky_display.HEIGHT - (ah + int(self.inky_display.HEIGHT * 0.1))
 
-    draw.text((text_x, text_y), message_text, self.inky_display.BLACK, message_font)
-    draw.text((author_x, author_y), message_author, self.inky_display.RED, author_font)
+    draw.text((text_x, text_y), message_text, theme['text'], message_font)
+    draw.text((author_x, author_y), message_author, theme['highlight'], author_font)
     self.inky_display.set_image(img)
 
     self.inky_display.show()
 
-  def display_message(self, message):
-    print(message)
-    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT))
+  def display_message(self, message, theme = 'light'):
+    theme = self.create_colour_scheme(theme)
+    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), theme['background'])
 
     draw = ImageDraw.Draw(img)
 
@@ -68,10 +89,6 @@ class ScreenController():
 
     text_x = (self.inky_display.WIDTH / 2) - (tw / 2)
     text_y = (self.inky_display.HEIGHT / 2) - (th / 2)
-    print(text_x, text_y)
-    draw.text((text_x, text_y), message, self.inky_display.BLACK, message_font)
-    print('text drawn')
+    draw.text((text_x, text_y), message, theme['text'], message_font)
     self.inky_display.set_image(img)
-    print('image set')
     self.inky_display.show()
-    print('display updated')
