@@ -130,7 +130,7 @@ class ScreenController():
     text_y = (self.screen_height / 2) - (th / 2)
 
     instruction_x = (self.screen_width  / 2) - (iw / 2)
-    instruction_y = (self.screen_width  / 3) * 2 - (ih / 2)
+    instruction_y = self.screen.height - ih
 
     draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme['highlight'])
 
@@ -142,7 +142,7 @@ class ScreenController():
     draw.rectangle((0, text_y + th + 5, self.screen_width, self.screen_height), fill=theme['highlight'])
 
     draw.multiline_text((text_x, text_y), message_text, theme['text'], message_font, align='center')
-    draw.multiline_text((instruction_x, instruction_y), instruction_text, theme['text'], instruction_font, align='center')
+    draw.multiline_text((instruction_x, instruction_y), instruction_text, theme['background'], instruction_font, align='center')
     self.inky_display.set_image(img)
     self.inky_display.show()
 
