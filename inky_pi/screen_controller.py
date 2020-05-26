@@ -95,10 +95,10 @@ class ScreenController():
     draw.rectangle((0, 0, self.inky_display.WIDTH, (self.inky_display.HEIGHT - th) / 2), fill=theme['highlight'])
     draw.rectangle((0, text_y + th + 5, self.inky_display.WIDTH, self.inky_display.HEIGHT), fill=theme['highlight'])
 
-    hatch_spacing = 12
+    hatch_spacing = 24
 
     for x in range(0, 2 * self.inky_display.WIDTH, hatch_spacing):
-      draw.line((x, 0, x - self.inky_display.WIDTH, self.inky_display.HEIGHT), fill=theme['background'], width=3)
+      draw.line((x, 0, x - self.inky_display.WIDTH, self.inky_display.HEIGHT), fill=theme['background'], width=6)
 
     draw.text((text_x, text_y), message, theme['text'], message_font)
     self.inky_display.set_image(img)
