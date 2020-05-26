@@ -37,4 +37,4 @@ class MessageState(State):
     payload_dictionary = json.loads(payload)
     print('message recieved {}'.format(payload_dictionary['text']))
     self.new_messages.append(payload_dictionary)
-    self.display_message('{} new message'.format(len(self.messages)))
+    self.screen_controller.display_message('{} new message'.format(len(self.messages)))
