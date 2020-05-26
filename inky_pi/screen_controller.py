@@ -64,7 +64,7 @@ class ScreenController():
     self.inky_display.show()
 
   def display_alert(self, message, theme = 'light'):
-    theme = Theme(message['theme'] or theme)
+    theme = Theme(theme)
     self.inky_display.set_border(theme.background)
     img = Image.new("P", (self.screen_width, self.screen_height), theme.background)
 
@@ -92,7 +92,7 @@ class ScreenController():
     self.inky_display.show()
 
   def display_prompt(self, message, instruction, theme = 'light'):
-    theme = Theme(message['theme'] or theme)
+    theme = Theme(theme)
     self.inky_display.set_border(theme.background)
     img = Image.new("P", (self.screen_width, self.screen_height), theme.background)
 
