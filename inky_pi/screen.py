@@ -8,3 +8,25 @@ class Screen():
     self.height = inky_display.HEIGHT
     self.image = Image.new('P', (self.width, self.height), self.theme.background)
     self.draw = ImageDraw.Draw(self.image)
+
+  def reflow_message(self, message, width, font, quote=True):
+    words = message.split(" ")
+    reflowed = '"' if quote else ''
+    line_length = 0
+
+    end_of_string = '"' if quote else ''
+
+    for i in range(len(words)):
+        word = words[i] + " "
+        word_length = font.getsize(word)[0]
+        line_length += word_length
+
+        if line_length < width:
+            reflowed += word
+        else:
+            line_length = word_length
+            reflowed = reflowed[:-1] + "\n  " + word
+
+    reflowed = reflowed.rstrip() + end_of_string
+
+    return reflowed
