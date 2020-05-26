@@ -110,7 +110,7 @@ class ScreenController():
     self.inky_display.set_image(img)
     self.inky_display.show()
 
-  def display_promptt(self, message, theme = 'light'):
+  def display_prompt(self, message, theme = 'light'):
     theme = self.create_colour_scheme(theme)
     self.inky_display.set_border(theme['background'])
     img = Image.new("P", (self.screen_width, self.screen_height), theme['background'])
