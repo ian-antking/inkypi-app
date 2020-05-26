@@ -8,7 +8,6 @@ from font_source_sans_pro import SourceSansProSemibold
 class ScreenController():
   def __init__(self):
         self.inky_display = InkyPHAT('red')
-        self.inky_display.set_border(self.inky_display.WHITE)
 
   def reflow_message(self, message, width, font):
     words = message.split(" ")
@@ -52,6 +51,7 @@ class ScreenController():
 
   def display_quote(self, message, theme = 'light'):
     theme = self.create_colour_scheme(message['theme'] or theme)
+    self.inky_display.set_border(theme['background'])
     img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), theme['background'])
 
     draw = ImageDraw.Draw(img)
@@ -81,6 +81,7 @@ class ScreenController():
 
   def display_message(self, message, theme = 'light'):
     theme = self.create_colour_scheme(theme)
+    self.inky_display.set_border(theme['background'])
     img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), theme['background'])
 
     draw = ImageDraw.Draw(img)
