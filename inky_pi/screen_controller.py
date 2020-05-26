@@ -4,6 +4,7 @@ from PIL import Image, ImageFont, ImageDraw
 from font_source_serif_pro import SourceSerifProSemibold
 from font_source_sans_pro import SourceSansProSemibold
 from theme import Theme
+from screen import Screen
 
 class ScreenController():
   def __init__(self):
@@ -63,10 +64,7 @@ class ScreenController():
     self.inky_display.show()
 
   def display_alert(self, message, theme = 'light'):
-    theme = Theme(theme, self.inky_display)
-    img = Image.new("P", (self.screen_width, self.screen_height), theme.background)
-
-    draw = ImageDraw.Draw(img)
+    screen = Screen(theme, self.inky_display)
 
     message_font = ImageFont.truetype(SourceSansProSemibold, 18)
 
@@ -77,16 +75,16 @@ class ScreenController():
     text_x = (self.screen_width  / 2) - (tw / 2)
     text_y = (self.screen_height / 2) - (th / 2)
 
-    draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme.highlight)
-    draw.rectangle((0, text_y + th + 5, self.screen_width, self.screen_height), fill=theme.highlight)
+    screen.draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme.highlight)
+    screen.draw.rectangle((0, text_y + th + 5, self.screen_width, self.screen_height), fill=theme.highlight)
 
     hatch_spacing = 24
 
     for x in range(0, 2 * self.screen_width, hatch_spacing):
-      draw.line((x, 0, x - self.screen_width, self.screen_height), fill=theme.background, width=3)
+      screen.draw.line((x, 0, x - self.screen_width, self.screen_height), fill=theme.background, width=3)
 
-    draw.multiline_text((text_x, text_y), message_text, theme.text, message_font, align='center')
-    self.inky_display.set_image(img)
+    screen.draw.multiline_text((text_x, text_y), message_text, theme.text, message_font, align='center')
+    self.inky_display.set_image(screen.image)
     self.inky_display.show()
 
   def display_prompt(self, message, instruction, theme = 'light'):

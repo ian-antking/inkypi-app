@@ -8,5 +8,5 @@ class Screen():
     self.theme = Theme(colour_scheme, inky_display)
     self.width = inky_display.WIDTH
     self.height = inky_display.HEIGHT
-    self.background = Image.new('P', (self.width, self.height), self.theme.background)
+    self.image = Image.new('P', (self.width, self.height), self.theme.background)
     self.draw = ImageDraw.Draw(self.background)
