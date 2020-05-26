@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from inky import InkyPHAT
 from PIL import Image, ImageFont, ImageDraw
-from font_fredoka_one import FredokaOne
 from font_source_serif_pro import SourceSerifProSemibold
 from font_source_sans_pro import SourceSansProSemibold
 
@@ -86,7 +85,7 @@ class ScreenController():
 
     draw = ImageDraw.Draw(img)
 
-    message_font = ImageFont.truetype(FredokaOne, 18)
+    message_font = ImageFont.truetype(SourceSansProSemibold, 18)
 
     tw, th = message_font.getsize(message)
 
