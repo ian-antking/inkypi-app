@@ -18,13 +18,9 @@ class MessageState(State):
     self.client.subscribe('test/message')
 
   def enterState(self):
-    self.set_busy()
     self.screen_controller.display_message('Waiting for messages...')
-    self.set_idle()
-
 
   def on_message(self, client, userdata, message):
-    self.set_busy()
     payload = str(message.payload.decode("utf-8", "ignore"))
     payload_dictionary = json.loads(payload)
     print('message recieved {}'.format(payload_dictionary['text']))
@@ -33,13 +29,8 @@ class MessageState(State):
     self.set_idle()
 
   def c_button(self):
-    self.set_busy()
     if len(self.new_messages):
       message = self.new_messages.pop(0)
       print(message)
       self.messages.append(message)
       self.screen_controller.display_quote(message)
-    
-    print(self.new_messages)
-    print(self.messages)
-    self.set_idle()
