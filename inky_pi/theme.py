@@ -12,3 +12,4 @@ class Theme():
       self.background = inky_display.RED
       self.text = inky_display.WHITE
       self.highlight = inky_display.BLACK
+    inky_display.set_border(self.background)
