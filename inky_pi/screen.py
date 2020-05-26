@@ -9,4 +9,4 @@ class Screen():
     self.width = inky_display.WIDTH
     self.height = inky_display.HEIGHT
     self.image = Image.new('P', (self.width, self.height), self.theme.background)
-    self.draw = ImageDraw.Draw(self.background)
+    self.draw = ImageDraw.Draw(self.image)
