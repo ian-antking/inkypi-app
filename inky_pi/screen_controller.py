@@ -33,19 +33,19 @@ class ScreenController():
       return {
         'background': self.inky_display.WHITE,
         'text': self.inky_display.BLACK,
-        'hightlinght': self.inky_display.RED
+        'hightlight': self.inky_display.RED
       }
     if theme == 'dark':
       return {
         'background': self.inky_display.BLACK,
         'text': self.inky_display.WHITE,
-        'hightlinght': self.inky_display.RED
+        'hightlight': self.inky_display.RED
       }
     if theme == 'red':
       return {
         'background': self.inky_display.RED,
         'text': self.inky_display.WHITE,
-        'hightlinght': self.inky_display.BLACK
+        'hightlight': self.inky_display.BLACK
       }
 
   def display_quote(self, message, theme = 'light'):
