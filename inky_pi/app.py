@@ -21,8 +21,6 @@ if __name__ == '__main__':
   from state_manager import StateManager
   from message_state import MessageState
 
-  buttonshim.set_pixel(0x00, 0x00, 0xff)
-
   states = [
     MessageState(),
   ]
