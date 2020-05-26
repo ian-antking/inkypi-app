@@ -3,7 +3,7 @@
 class App():
   def __init__(self, state_manager):
     self.state = state_manager
-    self.led = (0x00, 0xff, 0x00)
+    self.led = (0x00, 0x00, 0xff)
     self.busy = self.state.currentState.busy
   
   def setMode(self, mode):
@@ -20,6 +20,8 @@ if __name__ == '__main__':
   import signal
   from state_manager import StateManager
   from message_state import MessageState
+
+  buttonshim.set_pixel(0x00, 0x00, 0xff)
 
   states = [
     MessageState(),
