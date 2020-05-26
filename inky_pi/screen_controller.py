@@ -55,7 +55,7 @@ class ScreenController():
     draw = ImageDraw.Draw(img)
 
     message_font = ImageFont.truetype(FredokaOne, 16)
-    author_font = ImageFont.truetype(FredokaOne, 14)
+    author_font = ImageFont.truetype(FredokaOne, 16)
 
     message_text = self.reflow_message(message['text'], int(self.inky_display.WIDTH * 0.9), message_font)
     message_author = message['author']
