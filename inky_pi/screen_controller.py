@@ -48,11 +48,14 @@ class ScreenController():
         'highlight': self.inky_display.BLACK
       }
 
+  def create_background(self, colour):
+    image = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), colour)
+    self.inky_display.set_image(image)
+    return ImageDraw.Draw(image)
+
   def display_quote(self, message, theme = 'light'):
     theme = self.create_colour_scheme(theme)
-    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), theme['background'])
-
-    draw = ImageDraw.Draw(img)
+    draw = self.create_background(theme['background'])
 
     message_font = ImageFont.truetype(FredokaOne, 16)
     author_font = ImageFont.truetype(FredokaOne, 16)
@@ -73,7 +76,6 @@ class ScreenController():
 
     draw.text((text_x, text_y), message_text, theme['text'], message_font)
     draw.text((author_x, author_y), message_author, theme['highlight'], author_font)
-    self.inky_display.set_image(img)
 
     self.inky_display.show()
 
