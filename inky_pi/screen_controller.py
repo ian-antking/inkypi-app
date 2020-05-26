@@ -51,7 +51,7 @@ class ScreenController():
       }
 
   def display_quote(self, message, theme = 'light'):
-    theme = self.create_colour_scheme(theme)
+    theme = self.create_colour_scheme(message['theme'] or theme)
     img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), theme['background'])
 
     draw = ImageDraw.Draw(img)
