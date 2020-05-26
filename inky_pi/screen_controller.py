@@ -58,7 +58,7 @@ class ScreenController():
     author_font = ImageFont.truetype(FredokaOne, 16)
 
     message_text = self.reflow_message(message['text'], int(self.inky_display.WIDTH * 0.9), message_font)
-    message_author = message['author']
+    message_author = '- ' + message['author']
 
     print(message_text, message_author)
 
