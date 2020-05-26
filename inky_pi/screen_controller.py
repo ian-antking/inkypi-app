@@ -91,6 +91,10 @@ class ScreenController():
 
     text_x = (self.inky_display.WIDTH / 2) - (tw / 2)
     text_y = (self.inky_display.HEIGHT / 2) - (th / 2)
+
+    draw.rectangle((0, 0), self.inky_display.WIDTH, (self.inky_display.HEIGHT - th) / 2, fill=theme['highlight'])
+
     draw.text((text_x, text_y), message, theme['text'], message_font)
     self.inky_display.set_image(img)
     self.inky_display.show()
+
