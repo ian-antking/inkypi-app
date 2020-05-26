@@ -61,7 +61,7 @@ class ScreenController():
     self.inky_display.show()
 
   def display_alert(self, message, theme = 'light'):
-    screen = AlertScreen(theme, self.inky_display)
+    screen = AlertScreen(theme, self.inky_display, message)
     self.inky_display.set_image(screen.image)
     self.inky_display.show()
 
