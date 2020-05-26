@@ -91,7 +91,7 @@ class ScreenController():
 
     message_font = ImageFont.truetype(SourceSansProSemibold, 18)
 
-    message_text = self.reflow_message(message, int(self.screen_width * 0.9), message_font, False)
+    message_text = self.reflow_message(message, self.screen_width, message_font, False)
 
     tw, th = message_font.getsize(message)
 
