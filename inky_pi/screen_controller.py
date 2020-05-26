@@ -5,7 +5,7 @@ from font_source_serif_pro import SourceSerifProSemibold
 from font_source_sans_pro import SourceSansProSemibold
 from screen import Screen
 from alert_screen import AlertScreen
-from prompt_screen import PromtScreen
+from prompt_screen import PromptScreen
 
 class ScreenController():
   def __init__(self):
