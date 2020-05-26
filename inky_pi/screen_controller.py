@@ -95,8 +95,8 @@ class ScreenController():
 
     tw, th = message_font.getsize(message)
 
-    text_x = self.screen_width  / 2
-    text_y = self.screen_height / 2
+    text_x = (self.screen_width  / 2) - (tw / 2)
+    text_y = (self.screen_height / 2) - (th / 2)
 
     draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme['highlight'])
     draw.rectangle((0, text_y + th + 5, self.screen_width, self.screen_height), fill=theme['highlight'])
@@ -106,7 +106,7 @@ class ScreenController():
     for x in range(0, 2 * self.screen_width, hatch_spacing):
       draw.line((x, 0, x - self.screen_width, self.screen_height), fill=theme['background'], width=3)
 
-    draw.multiline_text((text_x, text_y), message_text, theme['text'], message_font)
+    draw.multiline_text((text_x, text_y), message_text, theme['text'], message_font, align='center')
     self.inky_display.set_image(img)
     self.inky_display.show()
 
