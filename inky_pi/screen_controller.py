@@ -74,3 +74,4 @@ class ScreenController():
     self.inky_display.set_image(img)
     print('image set')
     self.inky_display.show()
+    print('display updated')
