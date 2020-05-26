@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
   app = App(state_manager)
 
-  buttonshim.set_pixel(0xff, 0x00, 0x00)
+  buttonshim.set_pixel(0x00, 0xff, 0x00)
 
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, pressed):
@@ -37,9 +37,10 @@ if __name__ == '__main__':
 
   @buttonshim.on_press(buttonshim.BUTTON_C)
   def button_c(button, pressed):
-    buttonshim.set_pixel(0x00, 0xff, 0x00)
+    buttonshim.set_pixel(0x00, 0x00, 0xff)
     if not app.state.currentState.busy:
       app.state.currentState.c_button()
+      buttonshim.set_pixel(0x00, 0xff, 0x00)
     else: 
       print('busy')
 
