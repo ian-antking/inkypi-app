@@ -6,7 +6,7 @@ from font_fredoka_one import FredokaOne
 class ScreenController():
   def __init__(self):
         self.inky_display = InkyPHAT('red')
-        self.inky_display.set_border(self.inky_display.BLACK)
+        self.inky_display.set_border(self.inky_display.WHITE)
 
   def reflow_message(self, message, width, font):
     words = message.split(" ")
@@ -58,7 +58,7 @@ class ScreenController():
 
   def display_message(self, message):
     print(message)
-    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), self.inky_display.RED)
+    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT))
 
     draw = ImageDraw.Draw(img)
 
@@ -69,7 +69,7 @@ class ScreenController():
     text_x = (self.inky_display.WIDTH / 2) - (tw / 2)
     text_y = (self.inky_display.HEIGHT / 2) - (th / 2)
     print(text_x, text_y)
-    draw.text((text_x, text_y), message, self.inky_display.WHITE, message_font)
+    draw.text((text_x, text_y), message, self.inky_display.BLACK, message_font)
     print('text drawn')
     self.inky_display.set_image(img)
     print('image set')
