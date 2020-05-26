@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
   @buttonshim.on_press(buttonshim.BUTTON_C)
   def button_c(button, pressed):
-    if not app.state.currentState.busy:
+    if not app.busy:
       app.state.currentState.c_button()
     else: 
       print('busy')
@@ -59,3 +59,4 @@ if __name__ == '__main__':
   while True:
     app.update()
     buttonshim.set_pixel(*app.led)
+    print(app.busy)
