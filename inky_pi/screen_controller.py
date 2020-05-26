@@ -95,8 +95,8 @@ class ScreenController():
 
     tw, th = message_font.getsize(message)
 
-    text_x = (self.screen_width / 2) - (tw / 2)
-    text_y = (self.screen_height / 2) - (th / 2)
+    text_x = self.screen_width  / 2
+    text_y = self.screen_height / 2
 
     draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme['highlight'])
     draw.rectangle((0, text_y + th + 5, self.screen_width, self.screen_height), fill=theme['highlight'])
