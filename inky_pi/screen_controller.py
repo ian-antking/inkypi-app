@@ -39,6 +39,8 @@ class ScreenController():
     message_text = self.reflow_message(message['text'], int(self.inky_display.WIDTH * 0.9), message_font)
     message_author = message['author']
 
+    print(message_text, message_author)
+
     tw, th = message_font.getsize(message_text)
     aw, ah = author_font.getsize(message_author)
 
