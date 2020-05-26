@@ -1,4 +1,4 @@
-from PIL import Image, ImageFont, ImageDraw
+from PIL import Image, ImageDraw
 from theme import Theme
 
 class Screen():

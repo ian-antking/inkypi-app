@@ -1,4 +1,4 @@
-from PIL import Image, ImageFont, ImageDraw
+from PIL import ImageFont
 from font_source_sans_pro import SourceSansProSemibold
 from screen import Screen
 
