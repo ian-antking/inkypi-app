@@ -130,7 +130,7 @@ class ScreenController():
     text_y = (self.screen_height / 2) - (th / 2)
 
     instruction_x = (self.screen_width  / 2) - (iw / 2)
-    instruction_y = self.screen_height - ih
+    instruction_y = (self.screen_height / 3) * 2 - (ih / 2)
 
     draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme['highlight'])
 
