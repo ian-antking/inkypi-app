@@ -5,6 +5,13 @@ class State():
   def __init__(self, name):
     self.name = name
     self.screen_controller = ScreenController()
+    self.busy = False
+
+  def busy(self):
+    self.busy = True
+
+  def idle(self):
+    self.busy = False
 
   def enterState(self):
     print('entering {}'.format(self.name))

@@ -8,7 +8,6 @@ from time import sleep
 class MessageState(State):
   def __init__(self):
     super().__init__('message')
-    self.busy = True
     self.messages = []
     self.new_messages = []
     self.screen_controller = ScreenController()
@@ -19,21 +18,22 @@ class MessageState(State):
     self.client.subscribe('test/message')
 
   def enterState(self):
+    self.busy()
     self.screen_controller.display_message('Waiting for messages...')
-    self.busy =False
+    self.idle()
 
 
   def on_message(self, client, userdata, message):
-    self.busy = True
+    self.busy()
     payload = str(message.payload.decode("utf-8", "ignore"))
     payload_dictionary = json.loads(payload)
     print('message recieved {}'.format(payload_dictionary['text']))
     self.new_messages.append(payload_dictionary)
     self.screen_controller.display_message('{} new message'.format(len(self.new_messages)))
-    self.busy = False
+    self.idle()
 
   def c_button(self):
-    self.busy = True
+    self.busy()
     if len(self.new_messages):
       message = self.new_messages.pop(0)
       print(message)
@@ -42,4 +42,4 @@ class MessageState(State):
     
     print(self.new_messages)
     print(self.messages)
-    self.busy = False
+    self.idle()
