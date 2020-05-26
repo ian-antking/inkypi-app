@@ -19,7 +19,7 @@ class MessageState(State):
 
   def enterState(self):
     self.set_busy()
-    self.screen_controller.display_alert('Waiting for messages...', 'red')
+    self.screen_controller.display_alert('Waiting for messages...')
     self.set_idle()
 
 

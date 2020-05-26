@@ -110,32 +110,32 @@ class ScreenController():
     self.inky_display.set_image(img)
     self.inky_display.show()
 
-    def display_prompt(self, message, theme = 'light'):
-      theme = self.create_colour_scheme(theme)
-      self.inky_display.set_border(theme['background'])
-      img = Image.new("P", (self.screen_width, self.screen_height), theme['background'])
+  def display_promptt(self, message, theme = 'light'):
+    theme = self.create_colour_scheme(theme)
+    self.inky_display.set_border(theme['background'])
+    img = Image.new("P", (self.screen_width, self.screen_height), theme['background'])
 
-      draw = ImageDraw.Draw(img)
+    draw = ImageDraw.Draw(img)
 
-      message_font = ImageFont.truetype(SourceSansProSemibold, 18)
+    message_font = ImageFont.truetype(SourceSansProSemibold, 18)
 
-      message_text = self.reflow_message(message, self.screen_width, message_font, False)
+    message_text = self.reflow_message(message, self.screen_width, message_font, False)
 
-      tw, th = message_font.getsize(message)
+    tw, th = message_font.getsize(message)
 
-      text_x = (self.screen_width  / 2) - (tw / 2)
-      text_y = (self.screen_height / 2) - (th / 2)
+    text_x = (self.screen_width  / 2) - (tw / 2)
+    text_y = (self.screen_height / 2) - (th / 2)
 
-      draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme['highlight'])
+    draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme['highlight'])
 
-      hatch_spacing = 24
+    hatch_spacing = 24
 
-      for x in range(0, 2 * self.screen_width, hatch_spacing):
-        draw.line((x, 0, x - self.screen_width, self.screen_height), fill=theme['background'], width=3)
+    for x in range(0, 2 * self.screen_width, hatch_spacing):
+      draw.line((x, 0, x - self.screen_width, self.screen_height), fill=theme['background'], width=3)
 
-      # draw.rectangle((0, text_y + th + 5, self.screen_width, self.screen_height), fill=theme['highlight'])
+    draw.rectangle((0, text_y + th + 5, self.screen_width, self.screen_height), fill=theme['highlight'])
 
-      draw.multiline_text((text_x, text_y), message_text, theme['text'], message_font, align='center')
-      self.inky_display.set_image(img)
-      self.inky_display.show()
+    draw.multiline_text((text_x, text_y), message_text, theme['text'], message_font, align='center')
+    self.inky_display.set_image(img)
+    self.inky_display.show()
 
