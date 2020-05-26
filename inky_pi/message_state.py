@@ -38,3 +38,7 @@ class MessageState(State):
     print('message recieved {}'.format(payload_dictionary['text']))
     self.new_messages.append(payload_dictionary)
     self.screen_controller.display_message('{} new message'.format(len(self.new_messages)))
+
+  def c_button(self):
+    self.messages.append(self.new_messages[0])
+    self.display_message(self.new_messages.pop(0))
