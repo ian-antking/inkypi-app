@@ -38,7 +38,10 @@ if __name__ == '__main__':
   @buttonshim.on_press(buttonshim.BUTTON_C)
   def button_c(button, pressed):
     buttonshim.set_pixel(0x00, 0xff, 0x00)
-    app.state.currentState.c_button()
+    if not app.state.currentState.busy:
+      app.state.currentState.c_button()
+    else: 
+      print('busy')
 
   @buttonshim.on_press(buttonshim.BUTTON_D)
   def button_d(button, pressed):
