@@ -110,7 +110,7 @@ class ScreenController():
     self.inky_display.set_image(img)
     self.inky_display.show()
 
-  def display_prompt(self, message, theme = 'light'):
+  def display_prompt(self, message, instruction, theme = 'light'):
     theme = self.create_colour_scheme(theme)
     self.inky_display.set_border(theme['background'])
     img = Image.new("P", (self.screen_width, self.screen_height), theme['background'])
@@ -118,13 +118,19 @@ class ScreenController():
     draw = ImageDraw.Draw(img)
 
     message_font = ImageFont.truetype(SourceSansProSemibold, 18)
+    instruction_font = ImageFont.truetype(SourceSansProSemibold, 16)
 
     message_text = self.reflow_message(message, self.screen_width, message_font, False)
+    instruction_text = self.reflow_message(instruction, self.screen_width, instruction_font, False)
 
     tw, th = message_font.getsize(message)
+    iw, ih = instruction_font.getsize(instruction)
 
     text_x = (self.screen_width  / 2) - (tw / 2)
     text_y = (self.screen_height / 2) - (th / 2)
+
+    instruction_x = (self.screen_width  / 2) - (iw / 2)
+    instruction_y = (self.screen_width  / 3) * 2 - (ih / 2)
 
     draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme['highlight'])
 
@@ -136,6 +142,7 @@ class ScreenController():
     draw.rectangle((0, text_y + th + 5, self.screen_width, self.screen_height), fill=theme['highlight'])
 
     draw.multiline_text((text_x, text_y), message_text, theme['text'], message_font, align='center')
+    draw.multiline_text((instruction_x, instruction_y), instruction_text, theme['text'], instruction_font, align='center')
     self.inky_display.set_image(img)
     self.inky_display.show()
 
