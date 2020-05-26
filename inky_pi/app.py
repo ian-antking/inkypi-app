@@ -4,13 +4,15 @@ class App():
   def __init__(self, state_manager):
     self.state = state_manager
     self.led = (0x00, 0xff, 0x00)
+    self.busy = self.state.currentState.busy
   
   def setMode(self, mode):
     print('Mode set to {}'.format(mode))
     self.state.setState(mode)
 
   def update(self):
-    self.led = (0x00, 0xff, 0x00) if not self.state.currentState.bush else (0x00, 0x00, 0xff)
+    self.busy = self.state.currentState.busy
+    self.led = (0x00, 0xff, 0x00) if not self.busy else (0x00, 0x00, 0xff)
 
 
 if __name__ == '__main__':
@@ -55,5 +57,5 @@ if __name__ == '__main__':
 
 
   while True:
-    app.upate()
+    app.update()
     buttonshim.set_pixel(*app.led)
