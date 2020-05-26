@@ -70,6 +70,7 @@ class ScreenController():
     text_y = (self.inky_display.HEIGHT / 2) - (th / 2)
     print(text_x, text_y)
     draw.text((text_x, text_y), message, self.inky_display.WHITE, message_font)
+    print('text drawn')
     self.inky_display.set_image(img)
-
+    print('image set')
     self.inky_display.show()
