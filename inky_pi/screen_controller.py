@@ -71,7 +71,7 @@ class ScreenController():
     author_x = self.inky_display.WIDTH - (aw + int(self.inky_display.WIDTH * 0.1))
     author_y = self.inky_display.HEIGHT - (ah + int(self.inky_display.HEIGHT * 0.1))
 
-    draw.text((text_x, text_y), message_text, theme['text'], message_font)
+    draw.multiline_text((text_x, text_y), message_text, theme['text'], message_font)
     draw.text((author_x, author_y), message_author, theme['highlight'], author_font)
     self.inky_display.set_image(img)
 
