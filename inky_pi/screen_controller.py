@@ -49,7 +49,7 @@ class ScreenController():
     author_y = self.inky_display.HEIGHT - (ah + int(self.inky_display.HEIGHT * 0.1))
 
     draw.text((text_x, text_y), message_text, self.inky_display.WHITE, message_font)
-    draw.text((author_x, author_y), message_author, self.inky_display.RED, author_font)
+    draw.text((author_x, author_y), message_author, self.inky_display.WHITE, author_font)
     self.inky_display.set_image(img)
 
     self.inky_display.show()
