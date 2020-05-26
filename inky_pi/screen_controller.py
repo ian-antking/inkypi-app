@@ -10,10 +10,12 @@ class ScreenController():
         self.screen_width = self.inky_display.WIDTH
         self.screen_height = self.inky_display.HEIGHT
 
-  def reflow_message(self, message, width, font):
+  def reflow_message(self, message, width, font, quote=True):
     words = message.split(" ")
-    reflowed = '"'
+    reflowed = '"' if quote else ''
     line_length = 0
+
+    end_of_string = '"' if quote else ''
 
     for i in range(len(words)):
         word = words[i] + " "
@@ -26,7 +28,7 @@ class ScreenController():
             line_length = word_length
             reflowed = reflowed[:-1] + "\n  " + word
 
-    reflowed = reflowed.rstrip() + '"'
+    reflowed = reflowed.rstrip() + end_of_string
 
     return reflowed
 
@@ -89,11 +91,11 @@ class ScreenController():
 
     message_font = ImageFont.truetype(SourceSansProSemibold, 18)
 
-    message_text = self.reflow_message(message, int(self.screen_width * 0.9), message_font)
-    
+    message_text = self.reflow_message(message, int(self.screen_width * 0.9), message_font, False)
+
     tw, th = message_font.getsize(message)
 
-    text_x = (self.screen_width / 2)
+    text_x = (self.screen_width / 2) - (tw / 2)
     text_y = (self.screen_height / 2) - (th / 2)
 
     draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme['highlight'])
