@@ -38,28 +38,7 @@ class ScreenController():
 
   def display_message(self, message, theme = 'light'):
     screen = MessageScreen(message['theme'] or theme, self.inky_display, message)
-
-    message_font = ImageFont.truetype(SourceSerifProSemibold, 16)
-    author_font = ImageFont.truetype(SourceSansProSemibold, 18)
-
-    message_text = self.reflow_message(message['text'], int(self.screen_width * 0.9), message_font)
-    message_author = '- ' + message['author']
-
-    print(message_text, message_author)
-
-    tw, th = message_font.getsize(message_text)
-    aw, ah = author_font.getsize(message_author)
-
-    text_x = (self.screen_width - int(self.screen_width * 0.9) ) / 2
-    text_y = (self.screen_height - int(self.screen_height * 0.9) ) / 2
-
-    author_x = self.screen_width - (aw + int(self.screen_width * 0.1))
-    author_y = self.screen_height - (ah + int(self.screen_height * 0.1))
-
-    screen.draw.multiline_text((text_x, text_y), message_text, screen.theme.text, message_font)
-    screen.draw.text((author_x, author_y), message_author, screen.theme.highlight, author_font)
     self.inky_display.set_image(screen.image)
-
     self.inky_display.show()
 
   def display_alert(self, message, theme = 'light'):
