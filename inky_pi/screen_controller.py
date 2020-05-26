@@ -81,9 +81,9 @@ class ScreenController():
     hatch_spacing = 24
 
     for x in range(0, 2 * self.screen_width, hatch_spacing):
-      screen.draw.line((x, 0, x - self.screen_width, self.screen_height), fill=theme.background, width=3)
+      screen.draw.line((x, 0, x - self.screen_width, self.screen_height), fill=screen.theme.background, width=3)
 
-    screen.draw.multiline_text((text_x, text_y), message_text, theme.text, message_font, align='center')
+    screen.draw.multiline_text((text_x, text_y), message_text, screen.theme.text, message_font, align='center')
     self.inky_display.set_image(screen.image)
     self.inky_display.show()
 
