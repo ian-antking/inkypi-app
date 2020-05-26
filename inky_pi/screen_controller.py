@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 from inky import InkyPHAT
-from PIL import Image, ImageFont, ImageDraw
-from font_source_serif_pro import SourceSerifProSemibold
-from font_source_sans_pro import SourceSansProSemibold
-from screen import Screen
 from alert_screen import AlertScreen
 from prompt_screen import PromptScreen
 from message_screen import MessageScreen
