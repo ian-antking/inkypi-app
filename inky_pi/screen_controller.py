@@ -57,6 +57,7 @@ class ScreenController():
     self.inky_display.show()
 
   def display_message(self, message):
+    print(message)
     img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), self.inky_display.BLACK)
 
     draw = ImageDraw.Draw(img)
