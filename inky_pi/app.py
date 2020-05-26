@@ -18,10 +18,6 @@ if __name__ == '__main__':
 
   states = [
     MessageState(),
-    State('mode a'),
-    State('mode b'),
-    State('mode c'),
-    State('mode d')
   ]
 
   state_manager = StateManager(states)
