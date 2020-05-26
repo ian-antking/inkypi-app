@@ -5,6 +5,7 @@ from font_source_serif_pro import SourceSerifProSemibold
 from font_source_sans_pro import SourceSansProSemibold
 from screen import Screen
 from alert_screen import AlertScreen
+from prompt_screen import PromtScreen
 
 class ScreenController():
   def __init__(self):
@@ -66,7 +67,7 @@ class ScreenController():
     self.inky_display.show()
 
   def display_prompt(self, message, instruction, theme = 'light'):
-    screen = Screen(theme, self.inky_display)
+    screen = PromptScreen(theme, self.inky_display, message, instruction)
 
     message_font = ImageFont.truetype(SourceSansProSemibold, 18)
     instruction_font = ImageFont.truetype(SourceSansProSemibold, 16)
