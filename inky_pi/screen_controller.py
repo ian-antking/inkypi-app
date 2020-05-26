@@ -7,6 +7,8 @@ from font_source_sans_pro import SourceSansProSemibold
 class ScreenController():
   def __init__(self):
         self.inky_display = InkyPHAT('red')
+        self.screen_width = self.inky_display.WIDTH
+        self.screen_height = self.inky_display.HEIGHT
 
   def reflow_message(self, message, width, font):
     words = message.split(" ")
@@ -51,14 +53,14 @@ class ScreenController():
   def display_quote(self, message, theme = 'light'):
     theme = self.create_colour_scheme(message['theme'] or theme)
     self.inky_display.set_border(theme['background'])
-    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), theme['background'])
+    img = Image.new("P", (self.screen_width, self.screen_height), theme['background'])
 
     draw = ImageDraw.Draw(img)
 
     message_font = ImageFont.truetype(SourceSerifProSemibold, 16)
     author_font = ImageFont.truetype(SourceSansProSemibold, 18)
 
-    message_text = self.reflow_message(message['text'], int(self.inky_display.WIDTH * 0.9), message_font)
+    message_text = self.reflow_message(message['text'], int(self.screen_width * 0.9), message_font)
     message_author = '- ' + message['author']
 
     print(message_text, message_author)
@@ -66,11 +68,11 @@ class ScreenController():
     tw, th = message_font.getsize(message_text)
     aw, ah = author_font.getsize(message_author)
 
-    text_x = (self.inky_display.WIDTH - int(self.inky_display.WIDTH * 0.9) ) / 2
-    text_y = (self.inky_display.HEIGHT - int(self.inky_display.HEIGHT * 0.9) ) / 2
+    text_x = (self.screen_width - int(self.screen_width * 0.9) ) / 2
+    text_y = (self.screen_height - int(self.screen_height * 0.9) ) / 2
 
-    author_x = self.inky_display.WIDTH - (aw + int(self.inky_display.WIDTH * 0.1))
-    author_y = self.inky_display.HEIGHT - (ah + int(self.inky_display.HEIGHT * 0.1))
+    author_x = self.screen_width - (aw + int(self.screen_width * 0.1))
+    author_y = self.screen_height - (ah + int(self.screen_height * 0.1))
 
     draw.multiline_text((text_x, text_y), message_text, theme['text'], message_font)
     draw.text((author_x, author_y), message_author, theme['highlight'], author_font)
@@ -81,7 +83,7 @@ class ScreenController():
   def display_message(self, message, theme = 'light'):
     theme = self.create_colour_scheme(theme)
     self.inky_display.set_border(theme['background'])
-    img = Image.new("P", (self.inky_display.WIDTH, self.inky_display.HEIGHT), theme['background'])
+    img = Image.new("P", (self.screen_width, self.screen_height), theme['background'])
 
     draw = ImageDraw.Draw(img)
 
@@ -89,16 +91,16 @@ class ScreenController():
 
     tw, th = message_font.getsize(message)
 
-    text_x = (self.inky_display.WIDTH / 2) - (tw / 2)
-    text_y = (self.inky_display.HEIGHT / 2) - (th / 2)
+    text_x = (self.screen_width / 2)
+    text_y = (self.screen_height / 2) - (th / 2)
 
-    draw.rectangle((0, 0, self.inky_display.WIDTH, (self.inky_display.HEIGHT - th) / 2), fill=theme['highlight'])
-    draw.rectangle((0, text_y + th + 5, self.inky_display.WIDTH, self.inky_display.HEIGHT), fill=theme['highlight'])
+    draw.rectangle((0, 0, self.screen_width, (self.screen_height - th) / 2), fill=theme['highlight'])
+    draw.rectangle((0, text_y + th + 5, self.screen_width, self.screen_height), fill=theme['highlight'])
 
     hatch_spacing = 24
 
-    for x in range(0, 2 * self.inky_display.WIDTH, hatch_spacing):
-      draw.line((x, 0, x - self.inky_display.WIDTH, self.inky_display.HEIGHT), fill=theme['background'], width=3)
+    for x in range(0, 2 * self.screen_width, hatch_spacing):
+      draw.line((x, 0, x - self.screen_width, self.screen_height), fill=theme['background'], width=3)
 
     draw.text((text_x, text_y), message, theme['text'], message_font)
     self.inky_display.set_image(img)
