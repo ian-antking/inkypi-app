@@ -18,13 +18,20 @@ class App():
 if __name__ == '__main__':
   import buttonshim
   import signal
+  import os
   from state_manager import StateManager
   from message_state import MessageState
+  from dotenv import load_dotenv
+
+  load_dotenv()
+
+  mqtt_broker = os.getenv('MQTT_BROKER')
+  message_topic = os.getenv('MESSAGE_TOPIC')
 
   buttonshim.set_pixel(0x00, 0x00, 0xff)
 
   states = [
-    MessageState(),
+    MessageState('message', mqtt_broker, message_topic),
   ]
 
   state_manager = StateManager(states)
