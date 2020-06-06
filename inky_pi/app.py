@@ -1,9 +1,11 @@
 #!/usr/bin/env python
+BLUE = (0,0,127)
+GREEN = (0,127,0)
 
 class App():
   def __init__(self, state_manager):
     self.state = state_manager
-    self.led = (0x00, 0x00, 0xff)
+    self.led = BLUE
     self.busy = self.state.currentState.busy
   
   def setMode(self, mode):
@@ -12,7 +14,7 @@ class App():
 
   def update(self):
     self.busy = self.state.currentState.busy
-    self.led = (0x00, 0xff, 0x00) if not self.busy else (0x00, 0x00, 0xff)
+    self.led = GREEN if not self.busy else BLUE
 
 
 if __name__ == '__main__':
@@ -28,7 +30,7 @@ if __name__ == '__main__':
   mqtt_broker = os.getenv('MQTT_BROKER')
   message_topic = os.getenv('MESSAGE_TOPIC')
 
-  buttonshim.set_pixel(0x00, 0x00, 0xff)
+  buttonshim.set_pixel(*BLUE)
 
   states = [
     MessageState('message', mqtt_broker, message_topic),
