@@ -6,11 +6,15 @@ class StateManager:
     self.currentState = states[0]
     self.currentState.enter_state()
 
-  def findState(self, state_name):
+  def find_state(self, state_name):
     return next((state for state in self.states if state.name == state_name), None)
 
-  def setState(self, state_name):
+  def set_state(self, state_name):
+    self.currentState.exit_state()
+    self.currentState = self.find_state(state_name)
+    self.currentState.enter_state()
+
+  def update(self):
+    state_name = self.currentState.update()
     if not self.currentState.name == state_name: 
-      self.currentState.exit_state()
-      self.currentState = self.findState(state_name)
-      self.currentState.enter_state()
+      self.set_state(state_name)

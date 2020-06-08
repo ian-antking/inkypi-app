@@ -8,14 +8,11 @@ class App():
     self.state = state_manager
     self.led = BLUE
     self.busy = self.state.currentState.busy
-  
-  def setMode(self, mode):
-    print('Mode set to {}'.format(mode))
-    self.state.setState(mode)
 
   def update(self):
     self.busy = self.state.currentState.busy
     self.led = GREEN if not self.busy else BLUE
+    self.state.update()
 
 
 if __name__ == '__main__':

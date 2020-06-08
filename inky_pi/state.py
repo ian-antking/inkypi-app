@@ -7,6 +7,7 @@ class State():
     self.screen_controller = ScreenController()
     self.busy = False
     self.is_current_state = False
+    self.next_state = name
 
   def set_busy(self):
     self.busy = True
@@ -27,7 +28,7 @@ class State():
     self.set_idle()
 
   def update(self):
-    return None
+    return self.next_state
 
   def exit_state(self):
     self.set_inactive()
