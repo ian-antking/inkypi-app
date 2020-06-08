@@ -32,3 +32,21 @@ class State():
 
   def exit_state(self):
     self.set_inactive()
+
+  def a_button(self):
+    self.next_state = self.name
+
+  def b_button(self):
+    self.next_state = self.name
+
+  def c_button(self):
+    self.next_state = self.name
+
+  def d_button(self):
+    self.next_state = self.name
+    
+  def e_button(self):
+    self.next_state = self.name
+
+  def menu_button(self):
+    self.next_state = 'menu'

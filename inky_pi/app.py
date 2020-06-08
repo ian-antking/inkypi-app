@@ -44,11 +44,11 @@ if __name__ == '__main__':
 
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, pressed):
-    return None
+    app.state.currentState.a_button()
 
   @buttonshim.on_press(buttonshim.BUTTON_B)
   def button_b(button, pressed):
-    return None
+    app.state.currentState.b_button()
 
   @buttonshim.on_press(buttonshim.BUTTON_C)
   def button_b(button, pressed):
@@ -65,16 +65,16 @@ if __name__ == '__main__':
     if not app.busy and not c_button_held:
       app.state.currentState.c_button()
     elif not app.busy and c_button_held:
-      buttonshim.set_pixel(*RED)
+      app.state.currentState.menu_button()
 
   @buttonshim.on_press(buttonshim.BUTTON_D)
   def button_d(button, pressed):
-    return None
+    app.state.currentState.d_button()
 
 
   @buttonshim.on_press(buttonshim.BUTTON_E)
   def button_e(button, pressed):
-    return None
+    app.state.currentState.e_button()
 
 
   while True:
