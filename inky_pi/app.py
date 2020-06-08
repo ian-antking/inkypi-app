@@ -46,8 +46,6 @@ if __name__ == '__main__':
   def button_a(button, pressed):
     if not app.busy:
       app.state.currentState.a_button()
-      app.update()
-      buttonshim.set_pixel(*app.led)
 
   @buttonshim.on_press(buttonshim.BUTTON_B)
   def button_b(button, pressed):
