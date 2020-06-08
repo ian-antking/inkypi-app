@@ -23,7 +23,7 @@ class State():
   def enter_state(self):
     self.set_active()
     self.set_busy()
-    self.screen_controller.display_message(self.name)
+    self.screen_controller.display_alert(self.name)
     self.set_idle()
 
   def update(self):
