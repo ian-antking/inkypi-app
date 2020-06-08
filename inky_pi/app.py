@@ -9,11 +9,16 @@ class App():
     self.led = BLUE
     self.busy = self.state.busy
 
+  def set_busy(self):
+    self.busy = True
+
+  def set_idle(self):
+    self.busy = False
+
   def update(self):
     self.state.update()
     self.busy = self.state.busy
     self.led = GREEN if not self.busy else BLUE
-
 
 if __name__ == '__main__':
   import buttonshim
@@ -45,7 +50,10 @@ if __name__ == '__main__':
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, pressed):
     if not app.busy:
+      app.set_busy()
+      buttonshim.set_pixel(*app.led)
       app.state.currentState.a_button()
+      app.set_idle()
 
   @buttonshim.on_press(buttonshim.BUTTON_B)
   def button_b(button, pressed):
