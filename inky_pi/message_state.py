@@ -26,11 +26,11 @@ class MessageState(State):
     payload_dictionary = json.loads(payload)
     self.new_messages.append(payload_dictionary)
     message = '{} new message'.format(len(self.new_messages))
-    instruction = 'Press C'
+    instruction = 'Press A'
     self.screen_controller.display_prompt(message, instruction)
     self.set_idle()
 
-  def handle_c(self):
+  def handle_a(self):
     if len(self.new_messages):
       self.set_busy()
       message = self.new_messages.pop(0)
