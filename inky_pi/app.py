@@ -42,8 +42,8 @@ if __name__ == '__main__':
     global button_was_held
     button_was_held = False
 
-  @buttonshim.on_hold(buttonshim.BUTTON_A, hold_time=2)
-  def hold_handler(button, pressed):
+  @buttonshim.on_hold(BUTTONS, hold_time=2)
+  def hold_handler(button):
     global button_was_held
     button_was_held = True
     buttonshim.set_pixel(*WHITE)
