@@ -23,7 +23,6 @@ class App():
 if __name__ == '__main__':
   import buttonshim
   import signal
-  import os
   from state_manager import StateManager
   from states import states
 
