@@ -11,6 +11,7 @@ class StateManager:
     return next((state for state in self.states if state.name == state_name), None)
 
   def set_state(self, state_name):
+    self.busy = True
     self.currentState.exit_state()
     self.currentState = self.find_state(state_name)
     self.currentState.enter_state()

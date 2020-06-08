@@ -7,12 +7,12 @@ class App():
   def __init__(self, state_manager):
     self.state = state_manager
     self.led = BLUE
-    self.busy = self.state.currentState.busy
+    self.busy = self.state.busy
 
   def update(self):
+    self.state.update()
     self.busy = self.state.busy
     self.led = GREEN if not self.busy else BLUE
-    self.state.update()
 
 
 if __name__ == '__main__':
@@ -44,11 +44,13 @@ if __name__ == '__main__':
 
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, pressed):
-    app.state.currentState.a_button()
+    if not app.busy:
+      app.state.currentState.a_button()
 
   @buttonshim.on_press(buttonshim.BUTTON_B)
   def button_b(button, pressed):
-    app.state.currentState.b_button()
+    if not app.busy:
+      app.state.currentState.b_button()
 
   @buttonshim.on_press(buttonshim.BUTTON_C)
   def button_b(button, pressed):
@@ -69,12 +71,14 @@ if __name__ == '__main__':
 
   @buttonshim.on_press(buttonshim.BUTTON_D)
   def button_d(button, pressed):
-    app.state.currentState.d_button()
+    if not app.busy:
+      app.state.currentState.d_button()
 
 
   @buttonshim.on_press(buttonshim.BUTTON_E)
   def button_e(button, pressed):
-    app.state.currentState.e_button()
+    if not app.busy:
+      app.state.currentState.e_button()
 
 
   while True:
