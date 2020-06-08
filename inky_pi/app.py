@@ -45,6 +45,7 @@ if __name__ == '__main__':
   def hold_handler(button, pressed):
     global button_was_held
     button_was_held = True
+    buttonshim.set_pixel(255, 255, 255)
 
   @buttonshim.on_release(BUTTONS)
   def release_handler(button, pressed):
