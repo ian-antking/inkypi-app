@@ -45,7 +45,7 @@ if __name__ == '__main__':
   def button_a(button, pressed):
     return None
 
-  @buttonshim.on_hold(buttonshim.BUTTON_A, hold_time=2)
+  @buttonshim.on_hold(buttonshim.BUTTON_C, hold_time=2)
   def hold_handler(button):
     buttonshim.set_pixel(*RED)
 
