@@ -25,21 +25,9 @@ if __name__ == '__main__':
   import signal
   import os
   from state_manager import StateManager
-  from message_state import MessageState
-  from dotenv import load_dotenv
-  from menu_state import MenuState
-
-  load_dotenv()
-
-  mqtt_broker = os.getenv('MQTT_BROKER')
-  message_topic = os.getenv('MESSAGE_TOPIC')
+  from states import states
 
   buttonshim.set_pixel(*BLUE)
-
-  states = [
-    MenuState('menu'),
-    MessageState('message', mqtt_broker, message_topic),
-  ]
 
   state_manager = StateManager(states)
 
