@@ -49,10 +49,10 @@ if __name__ == '__main__':
   @buttonshim.on_release(BUTTONS)
   def release_handler(button, pressed):
     global button_was_held
-    button_name = buttonshim.NAMES[button]
-    press_type = "long_{}".format(button) if button_was_held else button
+    button_name = buttonshim.NAMES[button].lower()
+    press_type = "long_" if button_was_held else ""
     if not app.busy:
-      button_handler = "handle_{}".format(press_type).lower()
+      button_handler = "handle_{}{}".format(press_type, button_name)
       app.set_busy()
       buttonshim.set_pixel(*app.led)
       getattr(app.state.currentState, button_handler)()
