@@ -65,7 +65,7 @@ if __name__ == '__main__':
   def button_c(button, pressed):
     if not app.busy and not c_button_held:
       app.state.currentState.c_button()
-    elif not app.bush and c_button_held:
+    elif not app.busy and c_button_held:
       buttonshim.set_pixel(*RED)
 
   @buttonshim.on_press(buttonshim.BUTTON_D)
