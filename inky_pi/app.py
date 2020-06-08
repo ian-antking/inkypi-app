@@ -2,6 +2,7 @@
 BLUE = (0,0,127)
 GREEN = (0,127,0)
 RED = (127, 0, 0)
+WHITE = (127, 127, 127)
 
 class App():
   def __init__(self, state_manager):
@@ -41,11 +42,11 @@ if __name__ == '__main__':
     global button_was_held
     button_was_held = False
 
-  @buttonshim.on_hold(BUTTONS, hold_time=2)
+  @buttonshim.on_hold(buttonshim.BUTTON_A, hold_time=2)
   def hold_handler(button, pressed):
     global button_was_held
     button_was_held = True
-    buttonshim.set_pixel(255, 255, 255)
+    buttonshim.set_pixel(*WHITE)
 
   @buttonshim.on_release(BUTTONS)
   def release_handler(button, pressed):
