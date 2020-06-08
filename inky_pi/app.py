@@ -47,13 +47,17 @@ if __name__ == '__main__':
 
   c_button_held = False
 
-  @buttonshim.on_press(buttonshim.BUTTON_A)
-  def button_a(button, pressed):
+  def handle_button_press(button):
     if not app.busy:
       app.set_busy()
       buttonshim.set_pixel(*app.led)
-      app.state.currentState.a_button()
+      getattr(app.state.currentState, button)()
       app.set_idle()
+
+
+  @buttonshim.on_press(buttonshim.BUTTON_A)
+  def button_a(button, pressed):
+    handle_button_press('a_button')
 
   @buttonshim.on_press(buttonshim.BUTTON_B)
   def button_b(button, pressed):
