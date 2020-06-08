@@ -22,7 +22,7 @@ if __name__ == '__main__':
   from state_manager import StateManager
   from message_state import MessageState
   from dotenv import load_dotenv
-  from state import State
+  from menu_state import MenuState
 
   load_dotenv()
 
@@ -32,7 +32,7 @@ if __name__ == '__main__':
   buttonshim.set_pixel(*BLUE)
 
   states = [
-    State('menu'),
+    MenuState('menu'),
     MessageState('message', mqtt_broker, message_topic),
   ]
 
