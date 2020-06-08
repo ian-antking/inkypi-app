@@ -3,6 +3,7 @@
 class StateManager:
   def __init__(self, states):
     self.states = states
+    self.busy = True
     self.currentState = states[0]
     self.currentState.enter_state()
 
@@ -15,6 +16,7 @@ class StateManager:
     self.currentState.enter_state()
 
   def update(self):
+    self.busy = self.currentState.busy
     state_name = self.currentState.update()
     if not self.currentState.name == state_name: 
       self.set_state(state_name)

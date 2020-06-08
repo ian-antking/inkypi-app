@@ -10,7 +10,7 @@ class App():
     self.busy = self.state.currentState.busy
 
   def update(self):
-    self.busy = self.state.currentState.busy
+    self.busy = self.state.busy
     self.led = GREEN if not self.busy else BLUE
     self.state.update()
 
