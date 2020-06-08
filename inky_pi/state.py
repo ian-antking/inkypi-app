@@ -30,6 +30,7 @@ class State():
     return self.next_state
 
   def exit_state(self):
+    self.set_busy()
     self.next_state = self.name
     self.set_inactive()
 
@@ -49,5 +50,4 @@ class State():
     self.next_state = self.name
 
   def menu_button(self):
-    self.set_busy()
     self.next_state = 'menu'
