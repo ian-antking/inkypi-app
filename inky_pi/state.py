@@ -5,7 +5,7 @@ class State():
   def __init__(self, name):
     self.name = name
     self.screen_controller = ScreenController()
-    self.busy = False
+    self.busy = True
     self.is_current_state = False
     self.next_state = name
 
@@ -23,7 +23,6 @@ class State():
 
   def enter_state(self):
     self.set_active()
-    self.set_busy()
     self.screen_controller.display_alert(self.name)
     self.set_idle()
 
@@ -50,4 +49,5 @@ class State():
     self.next_state = self.name
 
   def menu_button(self):
+    self.set_busy()
     self.next_state = 'menu'
