@@ -2,7 +2,6 @@
 import paho.mqtt.client as mqtt
 import json
 from state import State
-from time import sleep
 
 class MessageState(State):
   def __init__(self, state_name, mqtt_broker, topic):
