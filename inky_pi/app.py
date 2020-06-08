@@ -41,25 +41,32 @@ if __name__ == '__main__':
 
   app = App(state_manager)
 
+  c_button_held = False
+
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, pressed):
     return None
-
-  @buttonshim.on_hold(buttonshim.BUTTON_C, hold_time=2)
-  def hold_handler(button):
-    buttonshim.set_pixel(*RED)
 
   @buttonshim.on_press(buttonshim.BUTTON_B)
   def button_b(button, pressed):
     return None
 
-
   @buttonshim.on_press(buttonshim.BUTTON_C)
+  def button_b(button, pressed):
+    global c_button_held
+    c_button_held = False
+
+  @buttonshim.on_hold(buttonshim.BUTTON_C, hold_time=2)
+  def hold_handler(button):
+    global c_button_held
+    c_button_held = True
+
+  @buttonshim.on_release(buttonshim.BUTTON_C)
   def button_c(button, pressed):
-    if not app.busy:
+    if not app.busy and not c_button_held:
       app.state.currentState.c_button()
-    else: 
-      print('busy')
+    elif not app.bush and c_button_held:
+      buttonshim.set_pixel(*RED)
 
   @buttonshim.on_press(buttonshim.BUTTON_D)
   def button_d(button, pressed):
