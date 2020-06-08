@@ -34,19 +34,19 @@ class State():
     self.next_state = self.name
     self.set_inactive()
 
-  def a_button(self):
+  def handle_a(self):
     self.next_state = self.name
 
-  def b_button(self):
+  def handle_b(self):
     self.next_state = self.name
 
-  def c_button(self):
+  def handle_c(self):
     self.next_state = self.name
 
-  def d_button(self):
+  def handle_d(self):
     self.next_state = self.name
     
-  def e_button(self):
+  def handle_e(self):
     self.next_state = self.name
 
   def menu_button(self):

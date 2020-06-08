@@ -6,5 +6,5 @@ class MenuState(State):
   def __init__(self, state_name):
     super().__init__(state_name)
 
-  def a_button(self):
+  def handle_a(self):
     self.next_state = 'message'

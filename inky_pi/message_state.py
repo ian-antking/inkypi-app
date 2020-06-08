@@ -30,7 +30,7 @@ class MessageState(State):
     self.screen_controller.display_prompt(message, instruction)
     self.set_idle()
 
-  def c_button(self):
+  def handle_c(self):
     if len(self.new_messages):
       self.set_busy()
       message = self.new_messages.pop(0)

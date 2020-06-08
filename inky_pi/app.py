@@ -45,52 +45,16 @@ if __name__ == '__main__':
 
   app = App(state_manager)
 
-  c_button_held = False
+  BUTTONS = [buttonshim.BUTTON_A, buttonshim.BUTTON_B, buttonshim.BUTTON_C, buttonshim.BUTTON_D, buttonshim.BUTTON_E]
 
-  def handle_button_press(button):
+  @buttonshim.on_release(BUTTONS)
+  def button_r_handler(button, pressed):
     if not app.busy:
+      button_handler = "handle_{}".format(buttonshim.NAMES[button]).lower()
       app.set_busy()
       buttonshim.set_pixel(*app.led)
-      getattr(app.state.currentState, button)()
+      getattr(app.state.currentState, button_handler)()
       app.set_idle()
-
-
-  @buttonshim.on_press(buttonshim.BUTTON_A)
-  def button_a(button, pressed):
-    handle_button_press('a_button')
-
-  @buttonshim.on_press(buttonshim.BUTTON_B)
-  def button_b(button, pressed):
-    if not app.busy:
-      app.state.currentState.b_button()
-
-  @buttonshim.on_press(buttonshim.BUTTON_C)
-  def button_b(button, pressed):
-    global c_button_held
-    c_button_held = False
-
-  @buttonshim.on_hold(buttonshim.BUTTON_C, hold_time=2)
-  def hold_handler(button):
-    global c_button_held
-    c_button_held = True
-
-  @buttonshim.on_release(buttonshim.BUTTON_C)
-  def button_c(button, pressed):
-    if not app.busy and not c_button_held:
-      app.state.currentState.c_button()
-    elif not app.busy and c_button_held:
-      app.state.currentState.menu_button()
-
-  @buttonshim.on_press(buttonshim.BUTTON_D)
-  def button_d(button, pressed):
-    if not app.busy:
-      app.state.currentState.d_button()
-
-
-  @buttonshim.on_press(buttonshim.BUTTON_E)
-  def button_e(button, pressed):
-    if not app.busy:
-      app.state.currentState.e_button()
 
 
   while True:
