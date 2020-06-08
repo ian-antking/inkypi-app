@@ -49,7 +49,8 @@ if __name__ == '__main__':
   @buttonshim.on_release(BUTTONS)
   def release_handler(button, pressed):
     global button_was_held
-    press_type = "long_{}".format(buttonshim.NAMES[button]) if button_was_held else buttonshim.NAMES[button]
+    button_name = buttonshim.NAMES[button]
+    press_type = "long_{}".format(button) if button_was_held else button
     if not app.busy:
       button_handler = "handle_{}".format(press_type).lower()
       app.set_busy()
