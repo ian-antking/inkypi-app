@@ -6,6 +6,7 @@ class State():
     self.name = name
     self.screen_controller = ScreenController()
     self.busy = False
+    self.is_current_state = False
 
   def set_busy(self):
     self.busy = True
@@ -13,12 +14,20 @@ class State():
   def set_idle(self):
     self.busy = False
 
-  def enterState(self):
-    print('entering {}'.format(self.name))
+  def set_active(self):
+    self.is_current_state = True
+
+  def set_inactive(self):
+    self.is_current_state = False
+
+  def enter_state(self):
+    self.set_active()
+    self.set_busy()
     self.screen_controller.display_message(self.name)
+    self.set_idle()
 
   def update(self):
-    sleep(1)
+    return None
 
-  def exitState(self):
-    print('exiting {}'.format(self.name))
+  def exit_state(self):
+    self.set_inactive()

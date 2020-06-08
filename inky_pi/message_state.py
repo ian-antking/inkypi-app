@@ -17,7 +17,8 @@ class MessageState(State):
     self.client.loop_start()
     self.client.subscribe(topic)
 
-  def enterState(self):
+  def enter_state(self):
+    self.set_active()
     self.set_busy()
     self.screen_controller.display_alert('Waiting for messages...')
     self.set_idle()
