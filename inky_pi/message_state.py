@@ -14,9 +14,20 @@ class MessageState(State):
     self.client.loop_start()
     self.client.subscribe(topic)
 
+  def display_new_massage_notification(self):
+    message = '{} new message'.format(len(self.new_messages))
+    instruction = 'Press A'
+    self.screen_controller.display_prompt(message, instruction)
+
+
   def enter_state(self):
     self.set_active()
-    self.screen_controller.display_alert('Waiting for messages...')
+    if len(self.new_messages):
+      self.display_new_massage_notification()
+    elif len(self.messages):
+      self.screen_controller.display_message(self.messages[0])
+    else:  
+      self.screen_controller.display_alert('Waiting for messages...') 
     self.set_idle()
 
 
@@ -25,9 +36,8 @@ class MessageState(State):
     payload = str(message.payload.decode("utf-8", "ignore"))
     payload_dictionary = json.loads(payload)
     self.new_messages.append(payload_dictionary)
-    message = '{} new message'.format(len(self.new_messages))
-    instruction = 'Press A'
-    self.screen_controller.display_prompt(message, instruction)
+    if self.is_current_state:
+      self.display_new_massage_notification()
     self.set_idle()
 
   def handle_a(self):
