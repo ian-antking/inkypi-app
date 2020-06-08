@@ -34,15 +34,28 @@ if __name__ == '__main__':
 
   BUTTONS = [buttonshim.BUTTON_A, buttonshim.BUTTON_B, buttonshim.BUTTON_C, buttonshim.BUTTON_D, buttonshim.BUTTON_E]
 
+  button_was_held = False
+
+  @buttonshim.on_press(BUTTONS)
+  def press_handler(button, pressed):
+    global button_was_held
+    button_was_held = False
+
+  @buttonshim.on_hold(BUTTONS, hold_time=2)
+  def hold_handler(button, pressed):
+    global button_was_held
+    button_was_held = True
+
   @buttonshim.on_release(BUTTONS)
-  def button_r_handler(button, pressed):
+  def release_handler(button, pressed):
+    global button_was_held
+    press_type = "long_{}".format(buttonshim.NAMES[button]) if button_was_held else buttonshim.NAMES[button]
     if not app.busy:
-      button_handler = "handle_{}".format(buttonshim.NAMES[button]).lower()
+      button_handler = "handle_{}".format(press_type).lower()
       app.set_busy()
       buttonshim.set_pixel(*app.led)
       getattr(app.state.currentState, button_handler)()
       app.set_idle()
-
 
   while True:
     previous_colour = app.led

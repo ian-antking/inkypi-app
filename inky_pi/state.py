@@ -49,5 +49,17 @@ class State():
   def handle_e(self):
     self.next_state = self.name
 
-  def menu_button(self):
+  def handle_long_a(self):
     self.next_state = 'menu'
+
+  def handle_long_b(self):
+    self.next_state = self.name
+
+  def handle_long_c(self):
+    self.next_state = self.name
+
+  def handle_long_d(self):
+    self.next_state = self.name
+    
+  def handle_long_e(self):
+    self.next_state = self.name
