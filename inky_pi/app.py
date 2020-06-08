@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 BLUE = (0,0,127)
 GREEN = (0,127,0)
+RED = (127, 0, 0)
 
 class App():
   def __init__(self, state_manager):
@@ -44,6 +45,9 @@ if __name__ == '__main__':
   def button_a(button, pressed):
     return None
 
+  @buttonshim.on_hold(buttonshim.BUTTON_A, hold_time=2)
+  def hold_handler(button):
+    buttonshim.set_pixel(*RED)
 
   @buttonshim.on_press(buttonshim.BUTTON_B)
   def button_b(button, pressed):
