@@ -31,6 +31,7 @@ class State():
     return self.next_state
 
   def exit_state(self):
+    self.next_state = self.name
     self.set_inactive()
 
   def a_button(self):
